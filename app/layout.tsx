@@ -32,7 +32,12 @@ export default function RootLayout({
       lang="en"
       className={`${poppins.variable} ${greatVibes.variable} h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col">{children}</body>
+      <body
+        className="min-h-full flex flex-col"
+        style={{ backgroundColor: "#FAF6F0", color: "#1A1A1A" }}
+      >
+        {children}
+      </body>
     </html>
   );
 }

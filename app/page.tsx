@@ -5,25 +5,25 @@ const featuredCandles = [
     name: "Lavender Fields",
     price: "$22.00",
     note: "Soft lavender calm for slow evenings.",
-    tint: "bg-[linear-gradient(145deg,#f5e8eb,#ebc2c7)]",
+    tint: "bg-[linear-gradient(145deg,#f9edf0,#ebc2c7)]",
   },
   {
     name: "Japanese Cherry Blossom",
     price: "$22.00",
     note: "Airy florals with a polished finish.",
-    tint: "bg-[linear-gradient(145deg,#f3e3e7,#eac7d0)]",
+    tint: "bg-[linear-gradient(145deg,#f8ecef,#e9c7cf)]",
   },
   {
     name: "Birthday Cake",
     price: "$22.00",
     note: "A sweet bakery glow, done elegantly.",
-    tint: "bg-[linear-gradient(145deg,#f7dce2,#f2c6cf)]",
+    tint: "bg-[linear-gradient(145deg,#fae9ed,#f3cfd7)]",
   },
   {
     name: "Sunburst Melon",
     price: "$22.00",
     note: "Fresh fruit brightness with a clean burn.",
-    tint: "bg-[linear-gradient(145deg,#f4e8dd,#dcc7b4)]",
+    tint: "bg-[linear-gradient(145deg,#f8efe6,#dcc7b4)]",
   },
 ];
 
@@ -121,21 +121,21 @@ export default function Home() {
             {featuredCandles.map((candle) => (
               <article
                 key={candle.name}
-                className="group rounded-xl border border-[var(--light-grey)] bg-[var(--surface)] p-4 shadow-[0_10px_30px_rgba(0,0,0,0.06)] transition-all duration-250 hover:-translate-y-1 hover:shadow-[0_14px_34px_rgba(0,0,0,0.1)]"
+                className="group flex h-full flex-col rounded-xl border border-[var(--light-grey)] bg-[var(--surface)] p-4 shadow-[0_10px_30px_rgba(0,0,0,0.06)] transition-all duration-250 hover:-translate-y-1 hover:shadow-[0_14px_34px_rgba(0,0,0,0.1)]"
               >
                 <div
                   className={`mb-4 h-56 rounded-lg border border-[var(--light-grey)] ${candle.tint}`}
                 />
-                <p className="text-xl font-medium text-[var(--foreground)]">
+                <p className="min-h-[56px] text-xl font-medium text-[var(--foreground)]">
                   {candle.name}
                 </p>
-                <p className="mt-2 text-sm font-normal text-[var(--muted)]">
+                <p className="mt-2 min-h-[42px] text-sm font-normal text-[var(--muted)]">
                   {candle.note}
                 </p>
                 <p className="mt-4 text-sm font-medium tracking-[0.04em] text-[var(--foreground)]">
                   {candle.price}
                 </p>
-                <button className="mt-4 w-full rounded-[10px] bg-[var(--primary-pink)] px-4 py-3 text-sm font-medium tracking-[0.04em] text-white hover:bg-[var(--dusty-pink)]">
+                <button className="mt-auto w-full rounded-[10px] bg-[var(--primary-pink)] px-4 py-3 text-sm font-medium tracking-[0.04em] text-white hover:bg-[var(--dusty-pink)]">
                   QUICK ADD
                 </button>
               </article>
