@@ -1,112 +1,135 @@
 import Link from "next/link";
 
-type Candle = {
+type Product = {
   name: string;
   price: string;
-  waxColor: string;
-  jarColor: string;
+  gradient: string;
 };
 
-const featuredCandles: Candle[] = [
+const products: Product[] = [
   {
     name: "Lavender Fields",
     price: "$22.00",
-    waxColor: "#bda5cf",
-    jarColor: "#c7b5d3",
+    gradient: "linear-gradient(160deg,#FAF6F0,#EBC2C7)",
   },
   {
     name: "Japanese Cherry Blossom",
     price: "$22.00",
-    waxColor: "#efd7ce",
-    jarColor: "#dfc9bc",
+    gradient: "linear-gradient(160deg,#FFFFFF,#F7A7B8)",
   },
   {
     name: "Birthday Cake",
     price: "$22.00",
-    waxColor: "#e8b8d0",
-    jarColor: "#dcc8d9",
+    gradient: "linear-gradient(160deg,#FAF6F0,#DCC7B4)",
   },
   {
     name: "Sunburst Melon",
     price: "$22.00",
-    waxColor: "#f0c17f",
-    jarColor: "#dbc6af",
+    gradient: "linear-gradient(160deg,#FFFFFF,#EBC2C7)",
   },
 ];
 
 const valuePoints = [
-  "Hand Poured in Small Batches",
-  "Premium Soy Wax",
-  "Clean Burning & Long Lasting",
-  "Made with Intention",
+  { title: "Hand Poured", detail: "in Small Batches" },
+  { title: "Premium", detail: "Soy Wax" },
+  { title: "Clean Burning", detail: "& Long Lasting" },
+  { title: "Made with", detail: "Intention" },
 ];
 
-function CandleJar({
-  waxColor,
-  jarColor,
-  className,
-}: {
-  waxColor: string;
-  jarColor: string;
-  className?: string;
-}) {
+function BrandMark() {
   return (
-    <div
-      className={`relative overflow-hidden rounded-xl border border-[#ded9d4] bg-[#f2ece6] ${className ?? ""}`}
-    >
-      <div className="absolute left-1/2 top-[10%] h-5 w-1 -translate-x-1/2 rounded bg-[#c9a377]" />
-      <div
-        className="absolute left-1/2 top-[14%] h-14 w-16 -translate-x-1/2 rounded-[48%_52%_44%_56%]"
-        style={{ backgroundColor: waxColor }}
-      />
-      <div
-        className="absolute left-1/2 top-[37%] h-[50%] w-[52%] -translate-x-1/2 rounded-[10px_10px_18px_18px] border border-[#cfc7be]"
-        style={{ backgroundColor: jarColor }}
-      />
-      <div className="absolute left-1/2 top-[55%] h-[1px] w-[44%] -translate-x-1/2 bg-[#b7afa7]" />
-      <div className="absolute inset-x-0 bottom-0 h-[28%] bg-gradient-to-t from-[#e8dfd5]/70 to-transparent" />
+    <div className="flex items-center gap-3">
+      <div className="grid h-10 w-10 place-items-center rounded-full border border-[var(--primary-pink)]">
+        <span className="font-[family-name:var(--font-accent)] text-[30px] leading-none text-[var(--primary-pink)]">
+          B
+        </span>
+      </div>
+      <p className="text-[11px] font-medium tracking-[0.35em] text-[var(--primary-pink)]">
+        BLISSFUL BURN
+      </p>
     </div>
   );
 }
 
-export default function Home() {
-  const heroCandles = [featuredCandles[0], featuredCandles[1]];
-
+function BagIcon() {
   return (
-    <main className="min-h-screen bg-[#f5efea] px-3 py-6 text-[var(--foreground)] sm:px-6">
-      <div className="mx-auto max-w-[1060px] overflow-hidden rounded-2xl border border-[#e4ddd6] bg-[var(--surface)] shadow-[0_10px_30px_rgba(0,0,0,0.06)]">
+    <svg
+      viewBox="0 0 24 24"
+      className="h-4 w-4 stroke-current"
+      fill="none"
+      strokeWidth="1.6"
+    >
+      <path d="M6 8h12l-1 11H7L6 8Z" />
+      <path d="M9 8a3 3 0 1 1 6 0" />
+    </svg>
+  );
+}
+
+function HeartIcon() {
+  return (
+    <svg
+      viewBox="0 0 24 24"
+      className="h-4 w-4 stroke-current"
+      fill="none"
+      strokeWidth="1.6"
+    >
+      <path d="M12 20s-7-4.5-7-10a4 4 0 0 1 7-2.5A4 4 0 0 1 19 10c0 5.5-7 10-7 10Z" />
+    </svg>
+  );
+}
+
+function DropIcon() {
+  return (
+    <svg
+      viewBox="0 0 24 24"
+      className="h-4 w-4 stroke-current"
+      fill="none"
+      strokeWidth="1.6"
+    >
+      <path d="M12 3c3 4 5 7 5 10a5 5 0 1 1-10 0c0-3 2-6 5-10Z" />
+    </svg>
+  );
+}
+
+function SparkIcon() {
+  return (
+    <svg
+      viewBox="0 0 24 24"
+      className="h-4 w-4 stroke-current"
+      fill="none"
+      strokeWidth="1.6"
+    >
+      <path d="m12 4 1.8 4.2L18 10l-4.2 1.8L12 16l-1.8-4.2L6 10l4.2-1.8L12 4Z" />
+    </svg>
+  );
+}
+
+export default function Home() {
+  return (
+    <main className="min-h-screen bg-[var(--background)] px-3 py-6 text-[var(--foreground)] sm:px-6">
+      <div className="mx-auto max-w-[1060px] overflow-hidden rounded-xl border border-[var(--light-grey)] bg-[var(--surface)] shadow-[0_10px_30px_rgba(0,0,0,0.06)]">
         <header className="flex h-[72px] items-center justify-between border-b border-[var(--light-grey)] px-4 sm:px-8">
-          <p className="text-[10px] font-medium tracking-[0.22em] text-[#4e4a47]">
-            BLISSFULBURN CANDLES
-          </p>
-          <nav className="hidden items-center gap-7 text-[11px] font-medium tracking-[0.08em] text-[#615c58] md:flex">
+          <BrandMark />
+          <nav className="hidden items-center gap-7 text-[11px] font-medium tracking-[0.05em] text-[var(--muted)] md:flex">
+            <Link href="#">HOME</Link>
             <Link href="#">SHOP</Link>
             <Link href="#">ABOUT</Link>
-            <Link href="#">FAQ</Link>
             <Link href="#">CONTACT</Link>
           </nav>
           <button
-            className="rounded-md border border-[var(--light-grey)] px-2 py-1 text-xs"
+            className="rounded-md border border-[var(--light-grey)] p-2 text-[var(--muted)]"
             aria-label="Open cart"
           >
-            🛒
+            <BagIcon />
           </button>
         </header>
 
-        <section className="grid gap-0 border-b border-[var(--light-grey)] lg:grid-cols-[1.05fr_0.95fr]">
-          <div className="relative min-h-[290px] overflow-hidden bg-[linear-gradient(160deg,#e7ddd6,#f5ece5)] p-6 sm:p-8">
-            <div className="absolute bottom-0 left-0 right-0 h-14 bg-gradient-to-t from-[#ddd2c7]/60 to-transparent" />
-            <div className="absolute bottom-0 left-4 h-20 w-28 rotate-[12deg] rounded-[100px_100px_0_0] border-t border-[#b39f8d]/60" />
-            <div className="grid h-full grid-cols-2 items-end gap-4">
-              {heroCandles.map((candle) => (
-                <CandleJar
-                  key={`hero-${candle.name}`}
-                  waxColor={candle.waxColor}
-                  jarColor={candle.jarColor}
-                  className="mx-auto h-56 w-full max-w-[168px]"
-                />
-              ))}
-            </div>
+        <section className="grid border-b border-[var(--light-grey)] lg:grid-cols-[1.05fr_0.95fr]">
+          <div className="relative min-h-[300px] overflow-hidden bg-[linear-gradient(155deg,#FFFFFF,#FAF6F0)] p-6 sm:p-8">
+            <div className="absolute inset-x-0 bottom-0 h-20 bg-gradient-to-t from-[#EBC2C733] to-transparent" />
+            <div className="absolute left-[8%] top-[18%] h-[62%] w-[34%] rounded-[28px_28px_36px_36px] border border-[var(--light-grey)] bg-[linear-gradient(165deg,#FAF6F0,#EBC2C7)]" />
+            <div className="absolute left-[38%] top-[12%] h-[68%] w-[38%] rounded-[30px_30px_40px_40px] border border-[var(--light-grey)] bg-[linear-gradient(165deg,#FFFFFF,#F7A7B8)]" />
+            <div className="absolute right-[8%] bottom-[12%] h-20 w-20 rounded-full border border-[var(--light-grey)] bg-[linear-gradient(165deg,#FFFFFF,#DCC7B4)]" />
           </div>
 
           <div className="flex flex-col justify-center gap-4 px-6 py-8 sm:px-10">
@@ -118,34 +141,33 @@ export default function Home() {
             <p className="max-w-sm text-sm leading-6 text-[var(--muted)]">
               Handcrafted soy candles made for calm moments and cozy spaces.
             </p>
-            <button className="w-fit rounded-md bg-[var(--foreground)] px-5 py-3 text-[11px] font-medium tracking-[0.08em] text-white">
+            <button className="w-fit rounded-[10px] bg-[var(--primary-pink)] px-5 py-3 text-[11px] font-medium tracking-[0.06em] text-white hover:bg-[var(--dusty-pink)]">
               SHOP COLLECTION
             </button>
           </div>
         </section>
 
         <section className="border-b border-[var(--light-grey)] px-4 py-8 sm:px-8 sm:py-10">
-          <h2 className="mb-6 text-center text-[11px] font-medium tracking-[0.22em] text-[#66615e]">
+          <h2 className="mb-6 text-center text-[11px] font-medium tracking-[0.22em] text-[var(--muted)]">
             FEATURED CANDLES
           </h2>
-          <div className="grid gap-4 grid-cols-2 md:grid-cols-4">
-            {featuredCandles.map((candle) => (
+          <div className="grid grid-cols-2 gap-4 md:grid-cols-4">
+            {products.map((product) => (
               <article
-                key={candle.name}
-                className="group rounded-lg border border-[var(--light-grey)] bg-white p-3 transition-all hover:-translate-y-0.5 hover:shadow-[0_12px_28px_rgba(0,0,0,0.08)]"
+                key={product.name}
+                className="rounded-lg border border-[var(--light-grey)] bg-[var(--surface)] p-3"
               >
-                <CandleJar
-                  waxColor={candle.waxColor}
-                  jarColor={candle.jarColor}
-                  className="h-28 w-full"
+                <div
+                  className="h-24 rounded-md border border-[var(--light-grey)]"
+                  style={{ background: product.gradient }}
                 />
-                <p className="mt-3 min-h-[30px] text-center text-[10px] font-medium text-[#494542]">
-                  {candle.name}
+                <p className="mt-3 min-h-[30px] text-center text-[10px] font-medium text-[var(--foreground)]">
+                  {product.name}
                 </p>
                 <p className="mt-1 text-center text-[10px] text-[var(--muted)]">
-                  {candle.price}
+                  {product.price}
                 </p>
-                <button className="mt-3 w-full rounded-md border border-[var(--light-grey)] bg-[var(--background)] px-2 py-1.5 text-[10px] font-medium tracking-[0.06em] text-[var(--foreground)]">
+                <button className="mt-3 w-full rounded-[10px] border border-[var(--light-grey)] bg-[var(--background)] px-2 py-1.5 text-[10px] font-medium tracking-[0.06em] text-[var(--foreground)] hover:border-[var(--primary-pink)] hover:text-[var(--primary-pink)]">
                   QUICK ADD
                 </button>
               </article>
@@ -155,40 +177,45 @@ export default function Home() {
 
         <section className="border-b border-[var(--light-grey)] px-4 py-7 sm:px-8">
           <div className="grid gap-4 text-center sm:grid-cols-2 lg:grid-cols-4">
-            {valuePoints.map((point) => (
-              <div key={point}>
-                <div className="mx-auto mb-2 h-6 w-6 rounded-full border border-[#cfc6be]" />
-                <p className="text-[10px] leading-4 text-[#65605d]">{point}</p>
+            {valuePoints.map((point, index) => (
+              <div key={point.title}>
+                <div className="mx-auto mb-2 grid h-6 w-6 place-items-center text-[var(--muted)]">
+                  {index === 0 && <SparkIcon />}
+                  {index === 1 && <DropIcon />}
+                  {index === 2 && <BagIcon />}
+                  {index === 3 && <HeartIcon />}
+                </div>
+                <p className="text-[10px] leading-4 text-[var(--muted)]">
+                  {point.title}
+                  <br />
+                  {point.detail}
+                </p>
               </div>
             ))}
           </div>
         </section>
 
-        <section className="grid border-b border-[var(--light-grey)] lg:grid-cols-[1fr_1fr]">
-          <div className="min-h-[240px] bg-[linear-gradient(150deg,#c7b5c8,#e8ddd4)] p-6">
-            <CandleJar
-              waxColor="#ba9ccc"
-              jarColor="#cfbfcb"
-              className="mx-auto h-full min-h-[190px] w-full max-w-[220px]"
-            />
+        <section className="grid border-b border-[var(--light-grey)] lg:grid-cols-2">
+          <div className="min-h-[240px] bg-[linear-gradient(155deg,#FFFFFF,#FAF6F0)] p-6">
+            <div className="mx-auto h-full min-h-[190px] max-w-[240px] rounded-xl border border-[var(--light-grey)] bg-[linear-gradient(165deg,#FFFFFF,#EBC2C7)]" />
           </div>
           <div className="flex items-center px-6 py-8 sm:px-10">
             <div className="space-y-3">
-              <h3 className="text-[11px] font-medium tracking-[0.22em] text-[#66615e]">
+              <h3 className="text-[11px] font-medium tracking-[0.22em] text-[var(--muted)]">
                 ABOUT BLISSFULBURN
               </h3>
               <p className="max-w-md text-sm leading-6 text-[var(--muted)]">
                 We create handcrafted candles using high quality ingredients and
                 thoughtful details in every jar.
               </p>
-              <button className="rounded-md border border-[var(--foreground)] px-5 py-2.5 text-[11px] font-medium tracking-[0.08em]">
+              <button className="rounded-[10px] border border-[var(--foreground)] px-5 py-2.5 text-[11px] font-medium tracking-[0.08em] hover:border-[var(--primary-pink)] hover:text-[var(--primary-pink)]">
                 OUR STORY
               </button>
             </div>
           </div>
         </section>
 
-        <footer className="flex flex-wrap items-center justify-between gap-2 border-t border-[var(--light-grey)] bg-[#f4efea] px-4 py-4 text-[10px] text-[#57524f] sm:px-8">
+        <footer className="flex flex-wrap items-center justify-between gap-2 border-t border-[var(--light-grey)] bg-[var(--background)] px-4 py-4 text-[10px] text-[var(--muted)] sm:px-8">
           <p>© 2026 Blissful Burn Candles</p>
           <p>Made with love</p>
           <p>Back to top</p>
