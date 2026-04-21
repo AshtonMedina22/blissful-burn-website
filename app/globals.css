@@ -1,0 +1,43 @@
+@import "tailwindcss";
+
+:root {
+  --background: #faf6f0;
+  --surface: #ffffff;
+  --foreground: #1a1a1a;
+  --muted: #777777;
+  --primary-pink: #f7a7b8;
+  --dusty-pink: #ebc2c7;
+  --nude-beige: #dcc7b4;
+  --light-grey: #e6e6e6;
+  --bb-cream: #faf6f0;
+  --bb-surface: #ffffff;
+  --bb-charcoal: #1a1a1a;
+  --bb-muted: #777777;
+  --bb-primary-pink: #f7a7b8;
+  --bb-dusty-pink: #ebc2c7;
+  --bb-nude: #dcc7b4;
+  --bb-light-grey: #e6e6e6;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-surface: var(--surface);
+  --color-foreground: var(--foreground);
+  --color-muted: var(--muted);
+  --color-primary-pink: var(--primary-pink);
+  --color-dusty-pink: var(--dusty-pink);
+  --color-nude-beige: var(--nude-beige);
+  --color-light-grey: var(--light-grey);
+  --font-sans: var(--font-poppins);
+  --font-accent: var(--font-great-vibes);
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+}
+
+a,
+button {
+  transition: all 0.25s ease;
+}
