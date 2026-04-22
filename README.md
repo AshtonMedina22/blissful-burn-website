@@ -23,13 +23,13 @@ Required environment variables:
 
 - `STRIPE_SECRET_KEY`
 - `NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY` (reserved for future client-side Stripe usage)
-- `NEXT_PUBLIC_BASE_URL` (for local dev use `http://localhost:3000`)
+- `NEXT_PUBLIC_SITE_URL` (for local dev use `http://localhost:3000`)
 
 Create `.env.local` in repo root:
 
 STRIPE_SECRET_KEY=sk_test_xxx
 NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY=pk_test_xxx
-NEXT_PUBLIC_BASE_URL=http://localhost:3000
+NEXT_PUBLIC_SITE_URL=http://localhost:3000
 
 If Stripe keys are missing, checkout requests will return a clear setup error instead of crashing.
 
