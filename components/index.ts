@@ -13,6 +13,10 @@ export { CartProvider, useCart } from './cart/CartContext';
 export { AddToCartButton } from './cart/AddToCartButton';
 export { CartLink } from './cart/CartLink';
 
+// Layout
+export { SiteHeader } from './layout/SiteHeader';
+export { SiteFooter } from './layout/SiteFooter';
+
 // Icons
 export {
   BagIcon,

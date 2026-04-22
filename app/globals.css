@@ -287,3 +287,36 @@ button {
 .site-footer {
   @apply flex flex-wrap items-center justify-between gap-3 bg-[var(--background)] px-5 py-8 text-[10px] tracking-[0.05em] text-[var(--muted)] sm:px-10;
 }
+
+.footer-top-link {
+  @apply underline-offset-4 hover:text-[var(--foreground)] hover:underline;
+}
+
+/* Generic info-page styles for non-home routes */
+.inner-hero {
+  @apply border-b border-[var(--light-grey)] px-5 py-12 sm:px-10 sm:py-14;
+}
+
+.info-page {
+  @apply px-5 py-12 sm:px-10 sm:py-14;
+}
+
+.info-page-copy {
+  @apply mt-4 max-w-[62ch] text-[15px] leading-7 text-[var(--muted)];
+}
+
+.contact-grid {
+  @apply mt-10 grid gap-4 sm:grid-cols-3;
+}
+
+.contact-card {
+  @apply rounded-[16px] border border-[var(--light-grey)] bg-[#fff9fb] px-4 py-5;
+}
+
+.contact-label {
+  @apply text-[10px] font-medium tracking-[0.14em] text-[var(--muted)];
+}
+
+.contact-value {
+  @apply mt-2 text-[12px] font-medium leading-6 text-[var(--foreground)];
+}

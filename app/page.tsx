@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { BagIcon, Button, DropIcon, HeartIcon, SparkIcon } from "@/components";
 import { AddToCartButton } from "@/components/cart/AddToCartButton";
-import { CartLink } from "@/components/cart/CartLink";
+import { SiteFooter, SiteHeader } from "@/components";
 import { PRODUCTS, formatPrice } from "@/lib/products";
 
 const valuePoints = [
@@ -11,34 +11,11 @@ const valuePoints = [
   { title: "Made with", detail: "Intention" },
 ];
 
-function BrandMark() {
-  return (
-    <div className="flex items-center gap-3">
-      <div className="grid h-10 w-10 place-items-center rounded-full border border-[var(--primary-pink)] sm:h-11 sm:w-11">
-        <span className="font-[family-name:var(--font-accent)] text-[30px] leading-none text-[var(--primary-pink)]">
-          B
-        </span>
-      </div>
-      <p className="text-[11px] font-medium tracking-[0.33em] text-[var(--primary-pink)] sm:text-xs">
-        BLISSFUL BURN
-      </p>
-    </div>
-  );
-}
 export default function Home() {
   return (
     <main className="page-container">
       <div className="page-wrapper">
-        <header className="site-header">
-          <BrandMark />
-          <nav className="nav-menu">
-            <Link href="#">HOME</Link>
-            <Link href="#">SHOP</Link>
-            <Link href="#">ABOUT</Link>
-            <Link href="#">CONTACT</Link>
-          </nav>
-          <CartLink />
-        </header>
+        <SiteHeader />
 
         <section className="hero-section">
           <div className="hero-content">
@@ -166,11 +143,7 @@ export default function Home() {
           </div>
         </section>
 
-        <footer className="site-footer">
-          <p>© 2026 Blissful Burn Candles</p>
-          <p>Made with love</p>
-          <p>Back to top</p>
-        </footer>
+        <SiteFooter />
       </div>
     </main>
   );
