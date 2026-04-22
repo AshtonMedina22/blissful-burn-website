@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { BagIcon, Button, DropIcon, HeartIcon, SparkIcon } from "@/components";
+import { BagIcon, DropIcon, HeartIcon, SparkIcon } from "@/components";
 import { AddToCartButton } from "@/components/cart/AddToCartButton";
 import { SiteFooter, SiteHeader } from "@/components";
 import { PRODUCTS, formatPrice } from "@/lib/products";
