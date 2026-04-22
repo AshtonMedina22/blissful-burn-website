@@ -31,10 +31,10 @@ export default function Home() {
             </p>
             <div className="hero-actions">
               <Link href="/shop" className="button button-primary hero-primary-cta">
-                Shop Collection
+                SHOP COLLECTION
               </Link>
               <Link href="/about" className="hero-secondary-link">
-                Learn More
+                LEARN MORE
               </Link>
             </div>
           </div>
@@ -115,16 +115,26 @@ export default function Home() {
           </div>
           <div className="about-content">
             <h3 className="about-title">
-              About Blissful Burn
+              ABOUT BLISSFUL BURN
             </h3>
             <p className="about-description">
               We create handcrafted candles using high-quality ingredients and
               thoughtful design—made to elevate your everyday environment.
             </p>
             <Link href="/about" className="button button-secondary">
-              Our Story
+              OUR STORY
             </Link>
           </div>
+        </section>
+
+        <section className="social-section">
+          <h3 className="section-title">Stay Connected</h3>
+          <p className="section-subtitle">
+            New releases, restocks, and behind-the-scenes.
+          </p>
+          <Link href="#" className="button button-secondary social-cta">
+            FOLLOW ON INSTAGRAM
+          </Link>
         </section>
 
         <SiteFooter />
