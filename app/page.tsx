@@ -121,7 +121,7 @@ export default function Home() {
             </h3>
             <p className="about-description">
               We create handcrafted candles using high-quality ingredients and
-              thoughtful design—made to elevate your everyday environment.
+              thoughtful design-made to elevate your everyday environment.
             </p>
             <Link href="/about" className="button button-secondary">
               OUR STORY
