@@ -53,7 +53,31 @@ button {
 
 /* Header & Navigation */
 .site-header {
-  @apply flex min-h-[86px] flex-wrap items-center justify-between gap-3 border-b border-[var(--light-grey)] px-4 pb-4 pt-5 sm:min-h-[90px] sm:flex-nowrap sm:px-11 sm:py-0;
+  @apply flex min-h-[86px] flex-wrap items-center justify-between gap-3 border-b border-[var(--light-grey)] px-4 pb-4 pt-5 sm:min-h-[90px] sm:px-11 sm:py-0 md:grid md:grid-cols-[1fr_auto_1fr] md:items-center;
+}
+
+.site-header > .brand-logo {
+  @apply md:justify-self-start md:w-fit;
+}
+
+.site-header > .nav-menu {
+  @apply md:justify-self-center md:w-fit;
+}
+
+.site-header > .icon-button {
+  @apply md:justify-self-end md:w-fit;
+}
+
+.header-slot-left {
+  @apply order-1 flex w-full items-center justify-start md:w-full md:justify-self-start;
+}
+
+.header-slot-center {
+  @apply order-3 flex w-full items-center justify-center border-t border-[var(--light-grey)] pt-3 md:order-2 md:w-auto md:justify-self-center md:border-t-0 md:pt-0;
+}
+
+.header-slot-right {
+  @apply order-2 flex w-auto items-center justify-end md:order-3 md:w-full md:justify-self-end;
 }
 
 .brand-logo {
@@ -73,7 +97,7 @@ button {
 }
 
 .nav-menu {
-  @apply order-3 flex w-full items-center justify-center gap-4 border-t border-[var(--light-grey)] pt-3 text-[10px] font-medium tracking-[0.08em] text-[var(--muted)] sm:gap-6 sm:text-[11px] md:order-2 md:w-auto md:border-t-0 md:pt-0 md:tracking-[0.12em];
+  @apply flex items-center justify-center gap-4 text-[10px] font-medium tracking-[0.08em] text-[var(--muted)] sm:gap-6 sm:text-[11px] md:tracking-[0.12em];
 }
 
 .nav-item {
@@ -82,6 +106,10 @@ button {
 
 .icon-button {
   @apply rounded-full border border-[var(--light-grey)] p-2 text-[var(--muted)] hover:border-[var(--primary-pink)] hover:text-[var(--primary-pink)] sm:p-2.5;
+}
+
+.header-cart {
+  @apply inline-flex h-fit w-fit self-auto justify-self-end;
 }
 
 /* Icons */

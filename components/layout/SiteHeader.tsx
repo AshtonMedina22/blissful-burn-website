@@ -29,7 +29,7 @@ export function SiteHeader() {
           </Link>
         ))}
       </nav>
-      <CartLink />
+      <CartLink className="header-cart" />
     </header>
   );
 }
