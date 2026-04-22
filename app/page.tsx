@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { Button, BagIcon, HeartIcon, DropIcon, SparkIcon } from "@/components";
 
 type Product = {
   name: string;
@@ -56,58 +57,6 @@ function BrandMark() {
   );
 }
 
-function BagIcon() {
-  return (
-    <svg
-      viewBox="0 0 24 24"
-      className="icon-svg"
-      fill="none"
-      strokeWidth="1.6"
-    >
-      <path d="M6 8h12l-1 11H7L6 8Z" />
-      <path d="M9 8a3 3 0 1 1 6 0" />
-    </svg>
-  );
-}
-
-function HeartIcon() {
-  return (
-    <svg
-      viewBox="0 0 24 24"
-      className="icon-svg"
-      fill="none"
-      strokeWidth="1.6"
-    >
-      <path d="M12 20s-7-4.5-7-10a4 4 0 0 1 7-2.5A4 4 0 0 1 19 10c0 5.5-7 10-7 10Z" />
-    </svg>
-  );
-}
-
-function DropIcon() {
-  return (
-    <svg
-      viewBox="0 0 24 24"
-      className="icon-svg"
-      fill="none"
-      strokeWidth="1.6"
-    >
-      <path d="M12 3c3 4 5 7 5 10a5 5 0 1 1-10 0c0-3 2-6 5-10Z" />
-    </svg>
-  );
-}
-
-function SparkIcon() {
-  return (
-    <svg
-      viewBox="0 0 24 24"
-      className="icon-svg"
-      fill="none"
-      strokeWidth="1.6"
-    >
-      <path d="m12 4 1.8 4.2L18 10l-4.2 1.8L12 16l-1.8-4.2L6 10l4.2-1.8L12 4Z" />
-    </svg>
-  );
-}
 
 export default function Home() {
   return (
@@ -139,17 +88,15 @@ export default function Home() {
 
           <div className="hero-content">
             <h1 className="hero-headline">
-              PURE. SIMPLE.
+              FIND YOUR
               <br />
-              BEAUTIFUL.
+              CALM.
             </h1>
             <p className="hero-description">
-              Handcrafted soy candles made for calm moments and cozy spaces with
-              a soft, modern finish.
+              Thoughtfully crafted soy candles designed to slow down your day,
+              soothe your senses, and create moments of peace in your everyday life.
             </p>
-            <button className="button button-primary">
-              SHOP COLLECTION
-            </button>
+            <Button variant="primary">SHOP COLLECTION</Button>
           </div>
         </section>
 
@@ -176,9 +123,7 @@ export default function Home() {
                 <p className="product-price">
                   {product.price}
                 </p>
-                <button className="button button-secondary">
-                  QUICK ADD
-                </button>
+                <Button variant="secondary">QUICK ADD</Button>
               </article>
             ))}
           </div>
@@ -217,9 +162,7 @@ export default function Home() {
               We create handcrafted candles using high quality ingredients and
               thoughtful details in every jar.
             </p>
-            <button className="button button-secondary">
-              OUR STORY
-            </button>
+            <Button variant="secondary">OUR STORY</Button>
           </div>
         </section>
 
