@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Great_Vibes, Poppins } from "next/font/google";
+import { CartProvider } from "@/components/cart/CartContext";
 import "./globals.css";
 
 const poppins = Poppins({
@@ -36,7 +37,7 @@ export default function RootLayout({
         className="min-h-full flex flex-col"
         style={{ backgroundColor: "#FAF6F0", color: "#1A1A1A" }}
       >
-        {children}
+        <CartProvider>{children}</CartProvider>
       </body>
     </html>
   );

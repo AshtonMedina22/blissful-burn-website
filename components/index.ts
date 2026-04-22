@@ -8,6 +8,11 @@
 // Buttons
 export { Button } from './buttons/Button';
 
+// Cart
+export { CartProvider, useCart } from './cart/CartContext';
+export { AddToCartButton } from './cart/AddToCartButton';
+export { CartLink } from './cart/CartLink';
+
 // Icons
 export {
   BagIcon,

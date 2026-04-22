@@ -1,36 +1,45 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Blissful Burn Website
 
-## Getting Started
+Next.js storefront for Blissful Burn with:
+- brand-aligned homepage layout and design-system components
+- client-side cart flow
+- Stripe Checkout Session API route
 
-First, run the development server:
+## Local Development
 
-```bash
+Run the app:
+
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Visit:
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+http://localhost:3000
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Stripe Setup (Ready for keys)
 
-## Learn More
+The checkout flow is already wired. Add Stripe keys when ready.
 
-To learn more about Next.js, take a look at the following resources:
+Required environment variables:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- `STRIPE_SECRET_KEY`
+- `NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY` (reserved for future client-side Stripe usage)
+- `NEXT_PUBLIC_BASE_URL` (for local dev use `http://localhost:3000`)
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+Create `.env.local` in repo root:
 
-## Deploy on Vercel
+STRIPE_SECRET_KEY=sk_test_xxx
+NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY=pk_test_xxx
+NEXT_PUBLIC_BASE_URL=http://localhost:3000
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+If Stripe keys are missing, checkout requests will return a clear setup error instead of crashing.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## Checkout Behavior
+
+- Cart state is persisted in localStorage.
+- Cart page (`/cart`) displays order summary and total.
+- Clicking checkout posts cart items to `/api/checkout`.
+- Server creates a Stripe Checkout Session and redirects user to Stripe-hosted checkout.
+
+## Deployment
+
+The repository includes `vercel.json` for explicit Next.js build configuration.

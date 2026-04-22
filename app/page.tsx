@@ -1,39 +1,8 @@
 import Link from "next/link";
-import { Button, BagIcon, HeartIcon, DropIcon, SparkIcon } from "@/components";
-
-type Product = {
-  name: string;
-  price: string;
-  gradient: string;
-  note: string;
-};
-
-const products: Product[] = [
-  {
-    name: "Lavender Fields",
-    price: "$22.00",
-    gradient: "linear-gradient(160deg,#FAF6F0,#EBC2C7)",
-    note: "Soft floral calm",
-  },
-  {
-    name: "Japanese Cherry Blossom",
-    price: "$22.00",
-    gradient: "linear-gradient(160deg,#FFFFFF,#F7A7B8)",
-    note: "Velvet petal blend",
-  },
-  {
-    name: "Birthday Cake",
-    price: "$22.00",
-    gradient: "linear-gradient(160deg,#FAF6F0,#DCC7B4)",
-    note: "Creamy sweet finish",
-  },
-  {
-    name: "Sunburst Melon",
-    price: "$22.00",
-    gradient: "linear-gradient(160deg,#FFFFFF,#EBC2C7)",
-    note: "Fresh fruit brightness",
-  },
-];
+import { BagIcon, Button, DropIcon, HeartIcon, SparkIcon } from "@/components";
+import { AddToCartButton } from "@/components/cart/AddToCartButton";
+import { CartLink } from "@/components/cart/CartLink";
+import { PRODUCTS, formatPrice } from "@/lib/products";
 
 const valuePoints = [
   { title: "Hand Poured", detail: "in Small Batches" },
@@ -56,8 +25,6 @@ function BrandMark() {
     </div>
   );
 }
-
-
 export default function Home() {
   return (
     <main className="page-container">
@@ -70,12 +37,7 @@ export default function Home() {
             <Link href="#">ABOUT</Link>
             <Link href="#">CONTACT</Link>
           </nav>
-          <button
-            className="icon-button"
-            aria-label="Open cart"
-          >
-            <BagIcon />
-          </button>
+          <CartLink />
         </header>
 
         <section className="hero-section">
@@ -105,7 +67,7 @@ export default function Home() {
             FEATURED CANDLES
           </h2>
           <div className="products-grid">
-            {products.map((product) => (
+            {PRODUCTS.map((product) => (
               <article
                 key={product.name}
                 className="product-card"
@@ -121,9 +83,9 @@ export default function Home() {
                   {product.note}
                 </p>
                 <p className="product-price">
-                  {product.price}
+                  {formatPrice(product.priceCents)}
                 </p>
-                <Button variant="secondary">QUICK ADD</Button>
+                <AddToCartButton product={product} />
               </article>
             ))}
           </div>
