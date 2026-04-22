@@ -56,6 +56,11 @@ button {
   @apply flex min-h-[78px] flex-wrap items-center justify-between gap-3 border-b border-[var(--light-grey)] px-4 py-3 sm:min-h-[90px] sm:flex-nowrap sm:px-11 sm:py-0;
 }
 
+.site-header > .brand-logo,
+.site-header > .icon-button {
+  @apply self-start sm:self-auto;
+}
+
 .site-header-main {
   @apply flex w-full items-center justify-between gap-3;
 }
@@ -73,7 +78,7 @@ button {
 }
 
 .brand-logo-text {
-  @apply text-[10px] font-medium tracking-[0.18em] text-[var(--primary-pink)] sm:text-xs sm:tracking-[0.28em];
+  @apply text-[10px] font-medium leading-none tracking-[0.18em] text-[var(--primary-pink)] sm:text-xs sm:tracking-[0.28em];
 }
 
 .nav-menu {
