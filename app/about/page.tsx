@@ -45,8 +45,9 @@ export default function AboutPage() {
             </p>
             <ul className="about-list">
               {commitments.map((item) => (
-                <li key={item.title}>
-                  <strong>{item.title}:</strong> {item.copy}
+                <li key={item.title} className="about-list-item">
+                  <p className="about-list-title">{item.title}</p>
+                  <p className="about-list-copy">{item.copy}</p>
                 </li>
               ))}
             </ul>

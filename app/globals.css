@@ -173,7 +173,7 @@ button {
 
 /* Shared section heading */
 .section-title {
-  @apply text-[12px] font-medium tracking-[0.24em] text-[var(--muted)];
+  @apply text-[12px] font-medium tracking-[0.16em] text-[var(--muted)];
 }
 
 .section-header {
@@ -268,19 +268,31 @@ button {
 }
 
 .about-content {
-  @apply flex items-center px-6 py-12 sm:px-12 sm:py-14;
+  @apply flex flex-col items-start justify-center gap-4 px-6 py-12 sm:px-12 sm:py-14;
 }
 
 .about-title {
-  @apply text-[12px] font-medium tracking-[0.24em] text-[var(--muted)];
+  @apply text-[13px] font-medium tracking-[0.12em] text-[var(--muted)];
 }
 
 .about-description {
-  @apply mt-5 max-w-[38ch] text-[15px] leading-7 text-[var(--muted)];
+  @apply max-w-[40ch] text-[15px] leading-7 text-[var(--muted)];
 }
 
 .about-list {
-  @apply mt-6 space-y-2 pl-4 text-[12px] leading-6 text-[var(--foreground)];
+  @apply mt-2 w-full space-y-3 text-[12px] leading-6 text-[var(--foreground)];
+}
+
+.about-list-item {
+  @apply rounded-[12px] border border-[var(--light-grey)] bg-white px-3 py-2.5;
+}
+
+.about-list-title {
+  @apply text-[11px] font-semibold tracking-[0.06em] text-[var(--foreground)];
+}
+
+.about-list-copy {
+  @apply mt-1 text-[12px] leading-6 text-[var(--muted)];
 }
 
 /* Footer */
