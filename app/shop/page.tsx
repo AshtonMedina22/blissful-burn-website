@@ -1,6 +1,7 @@
 import { AddToCartButton } from "@/components/cart/AddToCartButton";
 import { SiteFooter, SiteHeader } from "@/components";
 import { PRODUCTS, formatPrice } from "@/lib/products";
+import Link from "next/link";
 
 export default function ShopPage() {
   return (
@@ -16,15 +17,17 @@ export default function ShopPage() {
             </p>
           </div>
           <div className="products-grid">
-            {PRODUCTS.map((product, index) => (
+            {PRODUCTS.map((product) => (
               <article key={product.id} className="product-card">
-                <p className="product-index">NO. 0{index + 1}</p>
-                <div
-                  className="product-image"
-                  style={{ background: product.gradient }}
-                />
-                <p className="product-name">{product.name}</p>
-                <p className="product-note">{product.note}</p>
+                <Link href={`/shop/${product.id}`} className="product-image-link">
+                  <div
+                    className="product-image"
+                    style={{ background: product.gradient }}
+                  />
+                </Link>
+                <Link href={`/shop/${product.id}`} className="product-name-link">
+                  <p className="product-name">{product.name}</p>
+                </Link>
                 <p className="product-price">{formatPrice(product.priceCents)}</p>
                 <AddToCartButton product={product} className="product-add-btn" />
               </article>

@@ -2,7 +2,6 @@ import Link from "next/link";
 import { CartLink } from "@/components/cart/CartLink";
 
 const NAV_ITEMS = [
-  { href: "/", label: "HOME" },
   { href: "/shop", label: "SHOP" },
   { href: "/about", label: "ABOUT" },
   { href: "/contact", label: "CONTACT" },

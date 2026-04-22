@@ -66,13 +66,15 @@ export default function Home() {
                 key={product.name}
                 className="product-card"
               >
-                <div
-                  className="product-image"
-                  style={{ background: product.gradient }}
-                />
-                <p className="product-name">
-                  {product.name}
-                </p>
+                <Link href={`/shop/${product.id}`} className="product-image-link">
+                  <div
+                    className="product-image"
+                    style={{ background: product.gradient }}
+                  />
+                </Link>
+                <Link href={`/shop/${product.id}`} className="product-name-link">
+                  <p className="product-name">{product.name}</p>
+                </Link>
                 <p className="product-price">
                   {formatPrice(product.priceCents)}
                 </p>
