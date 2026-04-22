@@ -1,7 +1,9 @@
 import Link from "next/link";
 import { CartLink } from "@/components/cart/CartLink";
+import { HomeIcon } from "@/components/icons/Icons";
 
 const NAV_ITEMS = [
+  { href: "/", label: "HOME", iconOnly: true },
   { href: "/shop", label: "SHOP" },
   { href: "/about", label: "ABOUT" },
   { href: "/contact", label: "CONTACT" },
@@ -24,8 +26,13 @@ export function SiteHeader() {
       <BrandMark />
       <nav className="nav-menu">
         {NAV_ITEMS.map((item) => (
-          <Link key={item.href} href={item.href} className="nav-item">
-            {item.label}
+          <Link
+            key={item.label}
+            href={item.href}
+            className={item.iconOnly ? "nav-item nav-home-icon" : "nav-item"}
+            aria-label={item.iconOnly ? "Home" : undefined}
+          >
+            {item.iconOnly ? <HomeIcon size="sm" /> : item.label}
           </Link>
         ))}
       </nav>

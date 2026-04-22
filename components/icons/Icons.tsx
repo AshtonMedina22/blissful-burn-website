@@ -26,6 +26,22 @@ export function BagIcon({ className = '', size = 'md', ...props }: IconProps) {
   );
 }
 
+export function HomeIcon({ className = '', size = 'md', ...props }: IconProps) {
+  return (
+    <svg
+      viewBox="0 0 24 24"
+      className={`icon-svg ${sizeMap[size]} ${className}`}
+      fill="none"
+      strokeWidth="1.6"
+      {...props}
+    >
+      <path d="M4 10.5 12 4l8 6.5" />
+      <path d="M6.5 9.8V20h11V9.8" />
+      <path d="M10 20v-4.5h4V20" />
+    </svg>
+  );
+}
+
 export function HeartIcon({ className = '', size = 'md', ...props }: IconProps) {
   return (
     <svg

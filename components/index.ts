@@ -19,6 +19,7 @@ export { SiteFooter } from './layout/SiteFooter';
 
 // Icons
 export {
+  HomeIcon,
   BagIcon,
   HeartIcon,
   DropIcon,

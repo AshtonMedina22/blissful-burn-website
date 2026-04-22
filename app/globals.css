@@ -104,6 +104,10 @@ button {
   @apply hover:text-[var(--foreground)];
 }
 
+.nav-home-icon-link {
+  @apply inline-flex items-center justify-center rounded-full border border-[var(--light-grey)] p-1.5 text-[var(--muted)] hover:border-[var(--primary-pink)] hover:text-[var(--primary-pink)];
+}
+
 .icon-button {
   @apply rounded-full border border-[var(--light-grey)] p-2 text-[var(--muted)] hover:border-[var(--primary-pink)] hover:text-[var(--primary-pink)] sm:p-2.5;
 }
