@@ -53,16 +53,7 @@ button {
 
 /* Header & Navigation */
 .site-header {
-  @apply flex min-h-[78px] flex-wrap items-center justify-between gap-3 border-b border-[var(--light-grey)] px-4 py-3 sm:min-h-[90px] sm:flex-nowrap sm:px-11 sm:py-0;
-}
-
-.site-header > .brand-logo,
-.site-header > .icon-button {
-  @apply self-start sm:self-auto;
-}
-
-.site-header-main {
-  @apply flex w-full items-center justify-between gap-3;
+  @apply flex min-h-[86px] flex-wrap items-center justify-between gap-3 border-b border-[var(--light-grey)] px-4 pb-4 pt-5 sm:min-h-[90px] sm:flex-nowrap sm:px-11 sm:py-0;
 }
 
 .brand-logo {
@@ -70,27 +61,19 @@ button {
 }
 
 .brand-logo-mark {
-  @apply grid h-10 w-10 place-items-center rounded-full border border-[var(--primary-pink)] sm:h-11 sm:w-11;
+  @apply grid h-9 w-9 place-items-center rounded-full border border-[var(--primary-pink)] sm:h-11 sm:w-11;
 }
 
 .brand-logo-letter {
-  @apply font-[family-name:var(--font-accent)] text-[30px] leading-none text-[var(--primary-pink)];
+  @apply font-[family-name:var(--font-accent)] text-[27px] leading-none text-[var(--primary-pink)] sm:text-[30px];
 }
 
 .brand-logo-text {
-  @apply text-[10px] font-medium leading-none tracking-[0.18em] text-[var(--primary-pink)] sm:text-xs sm:tracking-[0.28em];
+  @apply text-[10px] font-medium leading-[1.15] tracking-[0.18em] text-[var(--primary-pink)] sm:text-xs sm:tracking-[0.28em];
 }
 
 .nav-menu {
   @apply order-3 flex w-full items-center justify-center gap-4 border-t border-[var(--light-grey)] pt-3 text-[10px] font-medium tracking-[0.08em] text-[var(--muted)] sm:gap-6 sm:text-[11px] md:order-2 md:w-auto md:border-t-0 md:pt-0 md:tracking-[0.12em];
-}
-
-.mobile-nav-menu {
-  @apply flex w-full items-center justify-center gap-5 border-t border-[var(--light-grey)] pt-3 text-[10px] font-medium tracking-[0.08em] text-[var(--muted)] md:hidden;
-}
-
-.mobile-nav-item {
-  @apply hover:text-[var(--foreground)];
 }
 
 .nav-item {
@@ -98,7 +81,7 @@ button {
 }
 
 .icon-button {
-  @apply rounded-full border border-[var(--light-grey)] p-2.5 text-[var(--muted)] hover:border-[var(--primary-pink)] hover:text-[var(--primary-pink)];
+  @apply rounded-full border border-[var(--light-grey)] p-2 text-[var(--muted)] hover:border-[var(--primary-pink)] hover:text-[var(--primary-pink)] sm:p-2.5;
 }
 
 /* Icons */
