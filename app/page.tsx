@@ -5,10 +5,10 @@ import { SiteFooter, SiteHeader } from "@/components";
 import { PRODUCTS, formatPrice } from "@/lib/products";
 
 const valuePoints = [
-  { title: "Hand Poured", detail: "in Small Batches" },
-  { title: "Premium Soy", detail: "Clean Wax" },
-  { title: "Clean Burning", detail: "Long Lasting" },
-  { title: "Made with", detail: "Intention" },
+  { title: "Hand Poured", detail: "Small Batch Craftsmanship" },
+  { title: "Premium Soy Wax", detail: "Clean, Even Burn" },
+  { title: "Long Lasting", detail: "Designed for Extended Use" },
+  { title: "Made with Intention", detail: "Thoughtful Ingredients & Design" },
 ];
 
 export default function Home() {
@@ -20,29 +20,22 @@ export default function Home() {
         <section className="hero-section">
           <div className="hero-content">
             <p className="hero-kicker">
-              SMALL-BATCH SOY CANDLES
+              SOY BLEND CANDLES
             </p>
             <h1 className="hero-headline">
-              PURE. SIMPLE.
-              <br />
-              BEAUTIFUL.
+              Elevate Your Everyday
             </h1>
             <p className="hero-description">
-              Handcrafted soy candles made for calm moments and cozy spaces with
-              a soft, modern finish.
+              Handcrafted candles designed to bring calm, warmth, and intention
+              into your space.
             </p>
             <div className="hero-actions">
-              <Button className="hero-primary-cta" variant="primary">
-                SHOP COLLECTION
-              </Button>
-              <Link href="#featured" className="hero-secondary-link">
-                EXPLORE SCENTS
+              <Link href="/shop" className="button button-primary hero-primary-cta">
+                Shop Collection
               </Link>
-            </div>
-            <div className="hero-note-row">
-              <p className="hero-note-pill">CLEAN BURN</p>
-              <p className="hero-note-pill">LONG-LASTING</p>
-              <p className="hero-note-pill">PETITE LUXURY</p>
+              <Link href="/about" className="hero-secondary-link">
+                Learn More
+              </Link>
             </div>
           </div>
 
@@ -61,30 +54,24 @@ export default function Home() {
         <section id="featured" className="products-section">
           <div className="section-header">
             <h2 className="section-title">
-              FEATURED CANDLES
+              Featured Candles
             </h2>
             <p className="section-subtitle">
-              Designed to feel soft, clean, and elevated in every room.
+              Curated scents for everyday moments.
             </p>
           </div>
           <div className="products-grid">
-            {PRODUCTS.map((product, index) => (
+            {PRODUCTS.map((product) => (
               <article
                 key={product.name}
                 className="product-card"
               >
-                <p className="product-index">
-                  NO. 0{index + 1}
-                </p>
                 <div
                   className="product-image"
                   style={{ background: product.gradient }}
                 />
                 <p className="product-name">
                   {product.name}
-                </p>
-                <p className="product-note">
-                  {product.note}
                 </p>
                 <p className="product-price">
                   {formatPrice(product.priceCents)}
@@ -97,7 +84,7 @@ export default function Home() {
 
         <section className="values-section">
           <h3 className="section-title">
-            WHY BLISSFUL BURN
+            Why Blissful Burn
           </h3>
           <div className="values-grid">
             {valuePoints.map((point, index) => (
@@ -128,18 +115,15 @@ export default function Home() {
           </div>
           <div className="about-content">
             <h3 className="about-title">
-              ABOUT BLISSFUL BURN
+              About Blissful Burn
             </h3>
             <p className="about-description">
-              We blend clean ingredients, warm scent profiles, and intentional
-              design to turn everyday spaces into restorative rituals.
+              We create handcrafted candles using high-quality ingredients and
+              thoughtful design—made to elevate your everyday environment.
             </p>
-            <ul className="about-list">
-              <li>Small-batch soy wax blends</li>
-              <li>Modern scent stories for home and gifting</li>
-              <li>Soft luxury styling inspired by calm living</li>
-            </ul>
-            <Button variant="secondary">OUR STORY</Button>
+            <Link href="/about" className="button button-secondary">
+              Our Story
+            </Link>
           </div>
         </section>
 
