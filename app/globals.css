@@ -41,3 +41,192 @@ a,
 button {
   transition: all 0.25s ease;
 }
+
+/* Page Layout */
+.page-container {
+  @apply min-h-screen bg-[var(--background)] px-4 py-8 text-[var(--foreground)] sm:px-7 lg:px-10;
+}
+
+.page-wrapper {
+  @apply mx-auto max-w-[1200px] overflow-hidden rounded-xl border border-[var(--light-grey)] bg-[var(--surface)] shadow-[0_10px_30px_rgba(0,0,0,0.06)];
+}
+
+/* Header & Navigation */
+.site-header {
+  @apply flex h-[74px] items-center justify-between border-b border-[var(--light-grey)] px-5 sm:h-[82px] sm:px-10;
+}
+
+.brand-logo {
+  @apply flex items-center gap-3;
+}
+
+.brand-logo-mark {
+  @apply grid h-10 w-10 place-items-center rounded-full border border-[var(--primary-pink)] sm:h-11 sm:w-11;
+}
+
+.brand-logo-letter {
+  @apply font-[family-name:var(--font-accent)] text-[30px] leading-none text-[var(--primary-pink)];
+}
+
+.brand-logo-text {
+  @apply text-[11px] font-medium tracking-[0.33em] text-[var(--primary-pink)] sm:text-xs;
+}
+
+.nav-menu {
+  @apply hidden items-center gap-8 text-[11px] font-medium tracking-[0.05em] text-[var(--muted)] md:flex;
+}
+
+.icon-button {
+  @apply rounded-md border border-[var(--light-grey)] p-2 text-[var(--muted)] hover:text-[var(--primary-pink)] hover:border-[var(--primary-pink)];
+}
+
+/* Icons */
+.icon-svg {
+  @apply h-4 w-4 stroke-current;
+}
+
+.icon-badge {
+  @apply mb-2.5 grid h-9 w-9 place-items-center rounded-full border border-[var(--light-grey)] text-[var(--muted)];
+}
+
+/* Buttons */
+.button {
+  @apply rounded-[10px] text-[11px] font-medium tracking-[0.06em] transition-colors;
+}
+
+.button-primary {
+  @apply bg-[var(--primary-pink)] px-5 py-2.5 text-white hover:bg-[var(--dusty-pink)];
+}
+
+.button-secondary {
+  @apply border border-[var(--light-grey)] bg-[var(--background)] px-4 py-2 text-[10px] text-[var(--foreground)] hover:border-[var(--primary-pink)] hover:text-[var(--primary-pink)];
+}
+
+/* Hero Section */
+.hero-section {
+  @apply grid border-b border-[var(--light-grey)] lg:grid-cols-[1.06fr_0.94fr];
+}
+
+.hero-visual {
+  @apply relative min-h-[380px] overflow-hidden bg-[linear-gradient(155deg,#FFFFFF,#FAF6F0)] px-6 py-8 sm:min-h-[440px] sm:px-10 sm:py-10;
+}
+
+.hero-gradient-overlay {
+  @apply absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-[#EBC2C733] to-transparent;
+}
+
+.hero-shape {
+  @apply absolute border border-[var(--light-grey)];
+}
+
+.hero-shape-1 {
+  @apply left-[10%] top-[20%] h-[64%] w-[31%] rounded-[30px_30px_40px_40px] bg-[linear-gradient(165deg,#FAF6F0,#EBC2C7)];
+}
+
+.hero-shape-2 {
+  @apply left-[38%] top-[14%] h-[72%] w-[36%] rounded-[34px_34px_44px_44px] bg-[linear-gradient(165deg,#FFFFFF,#F7A7B8)];
+}
+
+.hero-shape-3 {
+  @apply right-[9%] bottom-[14%] h-24 w-24 rounded-full bg-[linear-gradient(165deg,#FFFFFF,#DCC7B4)];
+}
+
+.hero-content {
+  @apply flex flex-col justify-center gap-5 px-6 py-10 sm:px-11 sm:py-12;
+}
+
+.hero-headline {
+  @apply text-[38px] font-light leading-[1.04] sm:text-[48px];
+}
+
+.hero-description {
+  @apply max-w-[33ch] text-[15px] leading-7 text-[var(--muted)];
+}
+
+/* Products Section */
+.products-section {
+  @apply border-b border-[var(--light-grey)] px-5 py-12 sm:px-10 sm:py-14;
+}
+
+.section-title {
+  @apply mb-8 text-center text-[12px] font-medium tracking-[0.22em] text-[var(--muted)];
+}
+
+.products-grid {
+  @apply grid grid-cols-2 gap-5 md:grid-cols-4;
+}
+
+.product-card {
+  @apply flex min-h-[340px] flex-col rounded-lg border border-[var(--light-grey)] bg-[var(--surface)] px-3.5 py-4 sm:min-h-[380px];
+}
+
+.product-image {
+  @apply h-44 rounded-md border border-[var(--light-grey)] sm:h-52;
+}
+
+.product-name {
+  @apply mt-4 min-h-[38px] text-center text-[11px] font-medium leading-[1.35] text-[var(--foreground)];
+}
+
+.product-note {
+  @apply mt-1 text-center text-[10px] leading-[1.45] text-[var(--muted)];
+}
+
+.product-price {
+  @apply mt-2 text-center text-[11px] font-medium text-[var(--foreground)];
+}
+
+.product-card .button-secondary {
+  @apply mt-auto self-center;
+}
+
+/* Values Section */
+.values-section {
+  @apply border-b border-[var(--light-grey)] px-5 py-11 sm:px-10;
+}
+
+.values-grid {
+  @apply mx-auto grid max-w-[920px] gap-y-7 text-center sm:grid-cols-2 sm:gap-x-8 lg:grid-cols-4;
+}
+
+.value-item {
+  @apply flex flex-col items-center;
+}
+
+.value-title {
+  @apply text-[11px] font-medium text-[var(--foreground)];
+}
+
+.value-subtitle {
+  @apply mt-0.5 text-[10px] tracking-[0.02em] text-[var(--muted)];
+}
+
+/* About Section */
+.about-section {
+  @apply grid border-b border-[var(--light-grey)] lg:grid-cols-[0.46fr_0.54fr];
+}
+
+.about-visual {
+  @apply min-h-[340px] bg-[linear-gradient(155deg,#FFFFFF,#FAF6F0)] p-6 sm:min-h-[390px] sm:p-8;
+}
+
+.about-image {
+  @apply mx-auto h-full min-h-[280px] max-w-[340px] rounded-xl border border-[var(--light-grey)] bg-[linear-gradient(165deg,#FFFFFF,#EBC2C7)];
+}
+
+.about-content {
+  @apply flex items-center px-6 py-11 sm:px-12 sm:py-12;
+}
+
+.about-title {
+  @apply text-[12px] font-medium tracking-[0.22em] text-[var(--muted)];
+}
+
+.about-description {
+  @apply text-[15px] leading-7 text-[var(--muted)];
+}
+
+/* Footer */
+.site-footer {
+  @apply flex flex-wrap items-center justify-between gap-3 border-t border-[var(--light-grey)] bg-[var(--background)] px-5 py-6 text-[10px] text-[var(--muted)] sm:px-10;
+}
