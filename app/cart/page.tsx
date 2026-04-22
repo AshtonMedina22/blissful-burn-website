@@ -2,7 +2,7 @@
 
 import { useMemo, useState } from "react";
 import Link from "next/link";
-import { Button, CartLink } from "@/components";
+import { Button, SiteHeader } from "@/components";
 import { useCart } from "@/components/cart/CartContext";
 import { formatPrice } from "@/lib/products";
 
@@ -66,21 +66,7 @@ export default function CartPage() {
   return (
     <main className="page-container">
       <div className="page-wrapper">
-        <header className="site-header">
-          <div className="brand-logo">
-            <Link href="/" className="brand-logo-mark">
-              <span className="brand-logo-letter">B</span>
-            </Link>
-            <p className="brand-logo-text">BLISSFUL BURN</p>
-          </div>
-          <nav className="nav-menu">
-            <Link href="/">HOME</Link>
-            <Link href="/#shop">SHOP</Link>
-            <Link href="/#about">ABOUT</Link>
-            <Link href="/#contact">CONTACT</Link>
-          </nav>
-          <CartLink />
-        </header>
+        <SiteHeader />
 
         <section className="products-section">
           <div className="mb-8 flex flex-wrap items-center justify-between gap-4">

@@ -24,7 +24,7 @@ export function SiteHeader() {
       <BrandMark />
       <nav className="nav-menu">
         {NAV_ITEMS.map((item) => (
-          <Link key={item.href} href={item.href}>
+          <Link key={item.href} href={item.href} className="nav-item">
             {item.label}
           </Link>
         ))}
