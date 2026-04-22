@@ -170,7 +170,7 @@ export default function Home() {
                 <p className="mt-4 min-h-[38px] text-center text-[11px] font-medium leading-[1.35] text-[var(--foreground)]">
                   {product.name}
                 </p>
-                <p className="mt-1 text-center text-[10px] text-[var(--muted)]">
+                <p className="mt-1 text-center text-[10px] leading-[1.45] text-[var(--muted)]">
                   {product.note}
                 </p>
                 <p className="mt-2 text-center text-[11px] font-medium text-[var(--foreground)]">
@@ -206,8 +206,8 @@ export default function Home() {
         </section>
 
         <section className="grid border-b border-[var(--light-grey)] lg:grid-cols-[0.46fr_0.54fr]">
-          <div className="min-h-[320px] bg-[linear-gradient(155deg,#FFFFFF,#FAF6F0)] p-6 sm:min-h-[370px] sm:p-8">
-            <div className="mx-auto h-full min-h-[260px] max-w-[320px] rounded-xl border border-[var(--light-grey)] bg-[linear-gradient(165deg,#FFFFFF,#EBC2C7)]" />
+          <div className="min-h-[340px] bg-[linear-gradient(155deg,#FFFFFF,#FAF6F0)] p-6 sm:min-h-[390px] sm:p-8">
+            <div className="mx-auto h-full min-h-[280px] max-w-[340px] rounded-xl border border-[var(--light-grey)] bg-[linear-gradient(165deg,#FFFFFF,#EBC2C7)]" />
           </div>
           <div className="flex items-center px-6 py-11 sm:px-12 sm:py-12">
             <div className="max-w-[420px] space-y-4">
