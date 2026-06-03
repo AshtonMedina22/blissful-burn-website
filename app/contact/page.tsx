@@ -6,8 +6,8 @@ export default function ContactPage() {
       <div className="page-wrapper">
         <SiteHeader />
 
-        <section className="info-page">
-          <p className="hero-kicker">CONTACT</p>
+        <section className="info-page contact-page">
+          <p className="eyebrow">CONTACT</p>
           <h1 className="hero-headline">GET IN TOUCH</h1>
           <p className="info-page-copy">
             We would love to help with scent recommendations, gifting requests,

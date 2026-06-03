@@ -1,0 +1,118 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1400 1200" role="img" aria-labelledby="title desc">
+  <title id="title">Blissful Burn premium candle hero visual</title>
+  <desc id="desc">A clean boutique-style still life with a Blissful Burn candle, wax melts, soft fabric, and warm glow in blush, cream, and light brown brand colors.</desc>
+  <defs>
+    <linearGradient id="backdrop" x1="0" x2="1" y1="0" y2="1">
+      <stop stop-color="#FFFDFC"/>
+      <stop offset=".38" stop-color="#FAF1EA"/>
+      <stop offset=".72" stop-color="#F4DCE1"/>
+      <stop offset="1" stop-color="#E8CFC0"/>
+    </linearGradient>
+    <radialGradient id="halo" cx="52%" cy="30%" r="64%">
+      <stop stop-color="#FFF8E9" stop-opacity=".95"/>
+      <stop offset=".48" stop-color="#F7A7B8" stop-opacity=".24"/>
+      <stop offset="1" stop-color="#8F735F" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="glass" x1="0" x2="1">
+      <stop stop-color="#F4DED5" stop-opacity=".55"/>
+      <stop offset=".22" stop-color="#FFFFFF" stop-opacity=".88"/>
+      <stop offset=".5" stop-color="#FFF9F5" stop-opacity=".58"/>
+      <stop offset=".78" stop-color="#E8CFC0" stop-opacity=".48"/>
+      <stop offset="1" stop-color="#B99682" stop-opacity=".2"/>
+    </linearGradient>
+    <linearGradient id="wax" x1="0" x2="0" y1="0" y2="1">
+      <stop stop-color="#FFF7F4"/>
+      <stop offset="1" stop-color="#F3D5DA"/>
+    </linearGradient>
+    <radialGradient id="flame" cx="48%" cy="42%" r="62%">
+      <stop stop-color="#FFFFFF"/>
+      <stop offset=".38" stop-color="#FFE7A7"/>
+      <stop offset=".72" stop-color="#F7A7B8"/>
+      <stop offset="1" stop-color="#B98268"/>
+    </radialGradient>
+    <linearGradient id="label" x1="0" x2="1">
+      <stop stop-color="#FFFFFF"/>
+      <stop offset="1" stop-color="#FAF1EA"/>
+    </linearGradient>
+    <linearGradient id="fabric" x1="0" x2="1" y1="0" y2="1">
+      <stop stop-color="#FFFFFF"/>
+      <stop offset=".55" stop-color="#F4E8D9"/>
+      <stop offset="1" stop-color="#DCC7B4"/>
+    </linearGradient>
+    <filter id="shadow" x="-40%" y="-40%" width="180%" height="180%">
+      <feDropShadow dx="0" dy="38" stdDeviation="38" flood-color="#6B4B40" flood-opacity=".2"/>
+    </filter>
+    <filter id="softShadow" x="-30%" y="-30%" width="160%" height="160%">
+      <feDropShadow dx="0" dy="18" stdDeviation="22" flood-color="#8F735F" flood-opacity=".18"/>
+    </filter>
+    <filter id="glow" x="-80%" y="-80%" width="260%" height="260%">
+      <feGaussianBlur stdDeviation="22" result="blur"/>
+      <feColorMatrix in="blur" type="matrix" values="1 0 0 0 0.95  0 1 0 0 0.55  0 0 1 0 0.55  0 0 0 .78 0"/>
+      <feBlend in="SourceGraphic" mode="screen"/>
+    </filter>
+  </defs>
+
+  <rect width="1400" height="1200" rx="88" fill="url(#backdrop)"/>
+  <rect x="48" y="48" width="1304" height="1104" rx="72" fill="#FFFDFC" opacity=".52"/>
+  <circle cx="703" cy="342" r="472" fill="url(#halo)"/>
+  <circle cx="1128" cy="242" r="188" fill="#F7A7B8" opacity=".14"/>
+  <circle cx="176" cy="932" r="214" fill="#DCC7B4" opacity=".22"/>
+
+  <g opacity=".46" fill="none" stroke="#8F735F" stroke-width="2">
+    <path d="M1076 140c74 58 99 139 74 242"/>
+    <path d="M192 284c-40 86-28 165 36 238"/>
+  </g>
+
+  <g filter="url(#shadow)">
+    <path d="M254 842c180-68 348-62 502 18 130 68 284 56 424 2 52-20 95 23 72 68-35 69-141 107-318 113H276c-102-6-136-65-22-101 42-14 64-39 0-100Z" fill="url(#fabric)"/>
+    <path d="M316 864c152 52 270 58 404 8 136-50 242 18 404 12" fill="none" stroke="#FFFFFF" stroke-width="14" stroke-linecap="round" opacity=".5"/>
+    <path d="M672 980c152-44 306-36 454 2" fill="none" stroke="#B99682" stroke-width="5" stroke-linecap="round" opacity=".25"/>
+  </g>
+
+  <g filter="url(#softShadow)">
+    <path d="M904 674c62-2 160 8 195 72 42 76-50 140-166 130-121-11-174-70-153-121 18-43 63-53 124-81Z" fill="#F6E6E8"/>
+    <path d="M876 716c110 4 202 48 210 96" fill="none" stroke="#FFFFFF" stroke-width="18" stroke-linecap="round" opacity=".66"/>
+    <rect x="916" y="622" width="170" height="154" rx="38" fill="#EBC2C7" opacity=".92"/>
+    <path d="M952 674h74M952 720h92" stroke="#FFFFFF" stroke-width="12" stroke-linecap="round" opacity=".62"/>
+  </g>
+
+  <g filter="url(#softShadow)">
+    <rect x="258" y="688" width="178" height="122" rx="34" fill="#FAF6F0"/>
+    <circle cx="318" cy="736" r="24" fill="#F7A7B8" opacity=".74"/>
+    <circle cx="376" cy="736" r="24" fill="#EBC2C7" opacity=".86"/>
+    <circle cx="318" cy="782" r="24" fill="#DCC7B4" opacity=".86"/>
+    <circle cx="376" cy="782" r="24" fill="#F4E8D9" opacity=".96"/>
+  </g>
+
+  <g filter="url(#shadow)">
+    <ellipse cx="664" cy="472" rx="222" ry="54" fill="#FFFFFF" opacity=".85"/>
+    <path d="M442 470h444l-42 456c-5 55-51 98-106 98H590c-56 0-102-43-106-98Z" fill="url(#glass)" stroke="#FFFFFF" stroke-width="7"/>
+    <path d="M476 512h376l-24 368c-4 48-42 84-90 84H590c-48 0-86-36-90-84Z" fill="#FFFFFF" opacity=".22"/>
+    <ellipse cx="664" cy="470" rx="220" ry="52" fill="url(#wax)" stroke="#FFFFFF" stroke-width="10"/>
+    <path d="M504 468c44-86 118-102 166-58 48-67 152-20 142 58 52 0 82 55 44 86-52 44-256 42-334 10-46-18-58-63-18-96Z" fill="#F7A7B8" opacity=".9"/>
+    <path d="M552 482c62-44 152-42 226 8" fill="none" stroke="#FFDCE4" stroke-width="22" stroke-linecap="round" opacity=".8"/>
+    <path d="M634 430v-90" stroke="#5A463B" stroke-width="8" stroke-linecap="round" opacity=".55"/>
+    <path d="M638 346c-18-62 34-92 38-151 61 66 64 128 26 172-28 32-68 12-64-21Z" fill="url(#flame)" filter="url(#glow)"/>
+    <path d="M618 616h208v214c0 24-20 44-44 44H662c-24 0-44-20-44-44Z" fill="url(#label)" stroke="#E8CFC0" stroke-width="3"/>
+    <g transform="translate(635 654) scale(.17)" fill="none" stroke="#E96B91" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M330 318C316 188 418 70 548 64C672 58 785 148 816 270C831 329 822 394 789 448C739 530 641 582 540 574C414 564 323 449 330 318Z" stroke-width="4.5"/>
+      <path d="M816 270C825 322 820 360 810 390" stroke-width="4.5" opacity=".9"/>
+      <path d="M482 300C505 252 625 185 704 195C759 202 757 252 732 292C705 335 640 378 561 415C664 388 743 410 746 482C750 566 606 606 503 590C431 579 440 516 497 475C548 438 648 408 776 402" stroke-width="14"/>
+      <path d="M555 240L493 520" stroke-width="14"/>
+    </g>
+    <text x="720" y="772" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="18" font-weight="300" letter-spacing="12" fill="#E96B91">BLISSFUL BURN</text>
+    <path d="M656 826h88" stroke="#F7A7B8" stroke-width="4" stroke-linecap="round" opacity=".55"/>
+  </g>
+
+  <g filter="url(#softShadow)">
+    <rect x="204" y="526" width="170" height="76" rx="38" fill="#FFFFFF" opacity=".9"/>
+    <text x="289" y="558" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="16" font-weight="700" letter-spacing="3" fill="#8F735F">SOY BLEND</text>
+    <text x="289" y="582" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif" font-size="24" font-style="italic" fill="#F7A7B8">hand poured</text>
+  </g>
+
+  <g filter="url(#softShadow)">
+    <circle cx="1058" cy="492" r="62" fill="#F7A7B8" opacity=".5"/>
+    <circle cx="1128" cy="552" r="38" fill="#FAF6F0" opacity=".92"/>
+    <path d="M1084 460c28 38 30 72 4 105" fill="none" stroke="#FFFFFF" stroke-width="8" stroke-linecap="round" opacity=".55"/>
+  </g>
+</svg>

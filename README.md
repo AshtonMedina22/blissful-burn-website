@@ -17,21 +17,23 @@ http://localhost:3000
 
 ## Stripe Setup (Ready for keys)
 
-The checkout flow is already wired. Add Stripe keys when ready.
+The checkout flow is wired to Stripe-hosted Checkout. You can launch the site before Stripe is configured; if keys are missing, checkout returns a clear setup message instead of crashing.
 
-Required environment variables:
+Create `.env.local` in the repo root using `.env.example` as the template.
 
-- `STRIPE_SECRET_KEY`
-- `NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY` (reserved for future client-side Stripe usage)
-- `NEXT_PUBLIC_SITE_URL` (for local dev use `http://localhost:3000`)
+Required when ready to accept payments:
 
-Create `.env.local` in repo root:
+- `STRIPE_SECRET_KEY` - your Stripe secret key (`sk_test_...` for testing, `sk_live_...` for live payments).
+- `NEXT_PUBLIC_SITE_URL` - the deployed site URL, for example `https://your-domain.com`.
 
-STRIPE_SECRET_KEY=sk_test_xxx
-NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY=pk_test_xxx
-NEXT_PUBLIC_SITE_URL=http://localhost:3000
+Optional Stripe settings:
 
-If Stripe keys are missing, checkout requests will return a clear setup error instead of crashing.
+- `STRIPE_SUCCESS_URL` - defaults to `/cart?checkout=success&session_id={CHECKOUT_SESSION_ID}`.
+- `STRIPE_CANCEL_URL` - defaults to `/cart?checkout=cancelled`.
+- `STRIPE_SHIPPING_COUNTRIES` - comma-separated country codes; defaults to `US`.
+- `STRIPE_ALLOW_PROMOTION_CODES` - defaults to `true`; set to `false` to hide promo-code entry.
+- `STRIPE_ENABLE_AUTOMATIC_TAX` - defaults to `false`; set to `true` only after automatic tax is configured in Stripe.
+- `NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY` - not required for the current hosted Checkout flow, but can be added later for Stripe Elements or embedded Checkout.
 
 ## Checkout Behavior
 
