@@ -1,13 +1,24 @@
 import Link from "next/link";
 
+const footerLinks = [
+  { href: "/shop", label: "Shop" },
+  { href: "/about", label: "About" },
+  { href: "/contact", label: "Contact" },
+];
+
 export function SiteFooter() {
   return (
     <footer className="site-footer">
-      <p>© 2026 Blissful Burn Candles</p>
-      <p className="site-footer-script">Glow, Relax, and Unwind.</p>
-      <Link href="/" className="footer-top-link">
-        Back to top
-      </Link>
+      <div>
+        <p className="footer-brand">BLISSFUL BURN</p>
+        <p className="site-footer-script">Glow. Relax. Unwind.</p>
+      </div>
+      <nav className="footer-nav" aria-label="Footer navigation">
+        {footerLinks.map((link) => (
+          <Link key={link.label} href={link.href}>{link.label}</Link>
+        ))}
+      </nav>
+      <p className="footer-copy">© 2026 Blissful Burn Candles</p>
     </footer>
   );
 }
