@@ -1,10 +1,18 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import Link from "next/link";
-import { Button, SiteHeader } from "@/components";
+import { Button, SiteFooter, SiteHeader } from "@/components";
 import { useCart } from "@/components/cart/CartContext";
+import { ProductVisual } from "@/components/visuals/BrandVisuals";
 import { formatPrice } from "@/lib/products";
+
+const quantityOptions = [1, 2, 3, 4, 5, 6, 7, 8];
+const trustNotes = [
+  "Secure checkout",
+  "Small-batch poured",
+  "Gift-ready packaging",
+];
 
 export default function CartPage() {
   const {
@@ -17,11 +25,30 @@ export default function CartPage() {
   } = useCart();
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [checkoutError, setCheckoutError] = useState<string | null>(null);
+  const [checkoutStatus, setCheckoutStatus] = useState<
+    "success" | "cancelled" | null
+  >(null);
 
   const itemCount = useMemo(
     () => items.reduce((sum, item) => sum + item.quantity, 0),
     [items],
   );
+
+  useEffect(() => {
+    const status = new URLSearchParams(window.location.search).get("checkout");
+
+    if (status !== "success" && status !== "cancelled") {
+      return;
+    }
+
+    queueMicrotask(() => {
+      setCheckoutStatus(status);
+
+      if (status === "success") {
+        clearCart();
+      }
+    });
+  }, [clearCart]);
 
   async function handleCheckout() {
     setCheckoutError(null);
@@ -68,131 +95,178 @@ export default function CartPage() {
       <div className="page-wrapper">
         <SiteHeader />
 
-        <section className="products-section">
-          <div className="mb-8 flex flex-wrap items-center justify-between gap-4">
+        <section className="cart-hero inner-hero">
+          <p className="eyebrow">Your cart</p>
+          <div className="cart-hero-row">
             <div>
-              <h1 className="hero-headline !text-[32px] sm:!text-[40px]">
-                YOUR CART
+              <h1 className="hero-headline">
+                A few soft rituals, ready to glow.
               </h1>
-              <p className="hero-description !max-w-none">
-                {itemCount} item{itemCount === 1 ? "" : "s"} ready for checkout.
+              <p className="hero-description">
+                {itemCount > 0
+                  ? `${itemCount} item${itemCount === 1 ? "" : "s"} selected for your Blissful Burn order.`
+                  : "Your cart is ready for candles, wax melts, and cozy rituals."}
               </p>
             </div>
-            {items.length > 0 && (
-              <button
-                className="text-[11px] font-medium tracking-[0.06em] text-[var(--muted)] hover:text-[var(--primary-pink)]"
-                onClick={clearCart}
-              >
-                CLEAR CART
+            {items.length > 0 ? (
+              <button className="cart-clear-button" onClick={clearCart}>
+                Clear cart
               </button>
-            )}
+            ) : null}
           </div>
+        </section>
 
-          {items.length === 0 ? (
-            <div className="rounded-lg border border-[var(--light-grey)] bg-[var(--surface)] p-8 text-center">
-              <p className="product-note !text-[12px]">
-                Your cart is currently empty.
+        <section className="cart-section">
+          {checkoutStatus ? (
+            <div className={`cart-status-card cart-status-${checkoutStatus}`}>
+              <p className="eyebrow">
+                {checkoutStatus === "success"
+                  ? "Checkout complete"
+                  : "Checkout paused"}
               </p>
-              <div className="mt-4">
-                <Link href="/">
-                  <Button variant="primary">CONTINUE SHOPPING</Button>
-                </Link>
-              </div>
+              <h2 className="cart-empty-title">
+                {checkoutStatus === "success"
+                  ? "Thank you for your order."
+                  : "Your cart is still here."}
+              </h2>
+              <p className="cart-empty-copy">
+                {checkoutStatus === "success"
+                  ? "Stripe confirmed the payment flow and your cart has been cleared in the browser."
+                  : "No payment was collected. You can keep shopping or return to checkout when you are ready."}
+              </p>
+              <Link href="/shop" className="button button-primary">
+                Continue shopping
+              </Link>
+            </div>
+          ) : items.length === 0 ? (
+            <div className="cart-empty-card">
+              <p className="eyebrow">Nothing saved yet</p>
+              <h2 className="cart-empty-title">
+                Start with a signature scent.
+              </h2>
+              <p className="cart-empty-copy">
+                Browse the current candle edit, then come back here to review
+                your order before checkout.
+              </p>
+              <Link href="/shop" className="button button-primary">
+                Continue shopping
+              </Link>
             </div>
           ) : (
-            <div className="grid gap-8 lg:grid-cols-[1fr_320px]">
-              <div className="space-y-4">
+            <div className="cart-layout">
+              <div className="cart-items-list" aria-label="Cart items">
                 {detailedItems.map((item) => (
-                  <article
-                    key={item.productId}
-                    className="rounded-lg border border-[var(--light-grey)] bg-[var(--surface)] p-4 sm:p-5"
-                  >
-                    <div className="grid gap-4 sm:grid-cols-[140px_1fr] sm:items-center">
-                      <div
-                        className="h-32 rounded-md border border-[var(--light-grey)]"
-                        style={{ background: item.product.gradient }}
-                      />
-                      <div>
-                        <h2 className="product-name !mt-0 !text-left !text-[13px]">
-                          {item.product.name}
-                        </h2>
-                        <p className="product-note !text-left !text-[11px]">
-                          {item.product.note}
-                        </p>
-                        <p className="product-price !text-left !text-[12px]">
-                          {formatPrice(item.product.priceCents)}
-                        </p>
+                  <article key={item.productId} className="cart-item-card">
+                    <Link
+                      href={`/shop/${item.product.id}`}
+                      className="cart-item-visual"
+                      aria-label={`View ${item.product.name}`}
+                    >
+                      <ProductVisual product={item.product} />
+                    </Link>
 
-                        <div className="mt-3 flex flex-wrap items-center gap-3">
-                          <label className="text-[10px] font-medium tracking-[0.05em] text-[var(--muted)]">
-                            QTY
-                          </label>
-                          <select
-                            className="rounded-[8px] border border-[var(--light-grey)] bg-[var(--background)] px-2 py-1 text-[11px]"
-                            value={item.quantity}
-                            onChange={(event) =>
-                              updateQuantity(
-                                item.productId,
-                                Number(event.target.value),
-                              )
-                            }
-                          >
-                            {[1, 2, 3, 4, 5, 6, 7, 8].map((qty) => (
-                              <option key={qty} value={qty}>
-                                {qty}
-                              </option>
-                            ))}
-                          </select>
-                          <button
-                            className="text-[10px] font-medium tracking-[0.05em] text-[var(--muted)] hover:text-[var(--primary-pink)]"
-                            onClick={() => removeItem(item.productId)}
-                          >
-                            REMOVE
-                          </button>
-                        </div>
+                    <div className="cart-item-details">
+                      <p className="product-category">
+                        {item.product.category}
+                      </p>
+                      <Link
+                        href={`/shop/${item.product.id}`}
+                        className="product-name-link"
+                      >
+                        <h2 className="cart-item-title">{item.product.name}</h2>
+                      </Link>
+                      <p className="cart-item-note">{item.product.note}</p>
+                      <p className="cart-item-price">
+                        {formatPrice(item.product.priceCents)} each
+                      </p>
+
+                      <div className="cart-item-controls">
+                        <label
+                          className="cart-quantity-label"
+                          htmlFor={`qty-${item.productId}`}
+                        >
+                          Qty
+                        </label>
+                        <select
+                          id={`qty-${item.productId}`}
+                          className="cart-quantity-select"
+                          value={item.quantity}
+                          onChange={(event) =>
+                            updateQuantity(
+                              item.productId,
+                              Number(event.target.value),
+                            )
+                          }
+                        >
+                          {quantityOptions.map((qty) => (
+                            <option key={qty} value={qty}>
+                              {qty}
+                            </option>
+                          ))}
+                        </select>
+                        <button
+                          className="cart-remove-button"
+                          onClick={() => removeItem(item.productId)}
+                        >
+                          Remove
+                        </button>
                       </div>
+                    </div>
+
+                    <div className="cart-line-total">
+                      <span>Line total</span>
+                      <strong>{formatPrice(item.lineTotal)}</strong>
                     </div>
                   </article>
                 ))}
               </div>
 
-              <aside className="h-fit rounded-lg border border-[var(--light-grey)] bg-[var(--surface)] p-5">
-                <h2 className="section-title !mb-4 !text-left">ORDER SUMMARY</h2>
-                <div className="space-y-2 text-[12px] text-[var(--muted)]">
-                  <div className="flex items-center justify-between">
+              <aside className="cart-summary-card" aria-label="Order summary">
+                <p className="eyebrow">Order summary</p>
+                <div className="cart-summary-lines">
+                  <div>
                     <span>Subtotal</span>
-                    <span className="font-medium text-[var(--foreground)]">
-                      {formatPrice(subtotal)}
-                    </span>
+                    <strong>{formatPrice(subtotal)}</strong>
                   </div>
-                  <div className="flex items-center justify-between">
+                  <div>
                     <span>Shipping</span>
-                    <span>Calculated at checkout</span>
+                    <strong>Calculated at checkout</strong>
                   </div>
-                </div>
-                <div className="my-4 border-t border-[var(--light-grey)]" />
-                <div className="flex items-center justify-between text-[13px] font-medium">
-                  <span>Total</span>
-                  <span>{formatPrice(subtotal)}</span>
+                  <div>
+                    <span>Estimated total</span>
+                    <strong>{formatPrice(subtotal)}</strong>
+                  </div>
                 </div>
 
-                <div className="mt-5">
-                  <Button
-                    variant="primary"
-                    className="w-full justify-center"
-                    onClick={handleCheckout}
-                    disabled={isSubmitting}
-                  >
-                    {isSubmitting ? "STARTING CHECKOUT..." : "CHECKOUT"}
-                  </Button>
+                <Button
+                  variant="primary"
+                  className="cart-checkout-button"
+                  onClick={handleCheckout}
+                  disabled={isSubmitting}
+                >
+                  {isSubmitting ? "Starting checkout..." : "Checkout securely"}
+                </Button>
+
+                {checkoutError ? (
+                  <p className="cart-error-message">{checkoutError}</p>
+                ) : null}
+
+                <div className="cart-trust-list" aria-label="Checkout promises">
+                  {trustNotes.map((note) => (
+                    <span key={note}>{note}</span>
+                  ))}
                 </div>
-                {checkoutError && (
-                  <p className="mt-3 text-[11px] text-[#b65f67]">{checkoutError}</p>
-                )}
+
+                <p className="cart-summary-note">
+                  Final taxes, shipping, and any promo codes are confirmed
+                  during secure checkout.
+                </p>
               </aside>
             </div>
           )}
         </section>
+
+        <SiteFooter />
       </div>
     </main>
   );
