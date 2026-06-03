@@ -1,17 +1,19 @@
-import { SiteFooter, SiteHeader, Button } from "@/components";
+import Link from "next/link";
+import { SiteFooter, SiteHeader } from "@/components";
+import { BrandStillLifeVisual } from "@/components/visuals/BrandVisuals";
 
 const commitments = [
   {
     title: "Intentional Ingredients",
-    copy: "We use clean-burning soy wax and carefully selected fragrance blends.",
+    copy: "Clean-burning soy blend wax and fragrance profiles selected for soft, elegant room presence.",
   },
   {
     title: "Small-Batch Craft",
-    copy: "Every collection is poured in small runs to keep quality high and personal.",
+    copy: "Every collection is poured in focused runs so the finished product feels personal and polished.",
   },
   {
     title: "Soft Luxury Design",
-    copy: "Our jars and scent profiles are created to feel calming, modern, and warm.",
+    copy: "Blush, cream, nude, and charcoal details keep the brand feminine, minimal, and timeless.",
   },
 ];
 
@@ -21,27 +23,34 @@ export default function AboutPage() {
       <div className="page-wrapper">
         <SiteHeader />
 
-        <section className="inner-hero">
-          <p className="hero-kicker">OUR STORY</p>
+        <section className="inner-hero about-hero">
+          <p className="eyebrow">About Blissful Burn</p>
           <h1 className="hero-headline">
-            BLISSFUL BURN
+            Meet the candle studio behind the glow.
           </h1>
           <p className="hero-description">
-            Blissful Burn started with one goal: make home feel gentler through
-            scent, glow, and quiet ritual.
+            This is the story page for Blissful Burn: our small-batch approach,
+            soft-luxury point of view, and the calm rituals behind every candle,
+            wax melt, and future relax wear drop.
           </p>
         </section>
 
-        <section className="about-section">
+        <section className="about-section editorial-section">
           <div className="about-visual">
-            <div className="about-image" />
-            <p className="about-caption">MADE WITH CARE</p>
+            <div className="about-image">
+              <BrandStillLifeVisual />
+            </div>
+            <p className="about-caption">Made with care</p>
           </div>
           <div className="about-content">
-            <h2 className="about-title">WHAT WE VALUE</h2>
+            <p className="eyebrow">Our standards</p>
+            <h2 className="about-display-title">
+              Beautiful fragrance should feel like part of the room.
+            </h2>
             <p className="about-description">
-              We believe candles should be beautiful and functional: easy on the
-              eyes, comfortable in your space, and clean in the way they burn.
+              We believe candles should be functional, beautiful, and easy to
+              live with—soft on the eyes, comforting in the air, and refined in
+              every detail.
             </p>
             <ul className="about-list">
               {commitments.map((item) => (
@@ -51,7 +60,9 @@ export default function AboutPage() {
                 </li>
               ))}
             </ul>
-            <Button variant="secondary">SHOP THE COLLECTION</Button>
+            <Link href="/shop" className="button button-primary">
+              Shop the collection
+            </Link>
           </div>
         </section>
 

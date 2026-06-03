@@ -6,25 +6,25 @@ export default function ContactPage() {
       <div className="page-wrapper">
         <SiteHeader />
 
-        <section className="info-page">
-          <p className="hero-kicker">CONTACT</p>
-          <h1 className="hero-headline">GET IN TOUCH</h1>
+        <section className="info-page contact-page">
+          <p className="eyebrow">Contact</p>
+          <h1 className="hero-headline">Let’s create a softer moment.</h1>
           <p className="info-page-copy">
             We would love to help with scent recommendations, gifting requests,
-            and wholesale inquiries. Send us a note and we will reply soon.
+            wholesale inquiries, or questions about upcoming wax melts and relax wear.
           </p>
 
           <div className="contact-grid">
             <div className="contact-card">
-              <p className="contact-label">EMAIL</p>
+              <p className="contact-label">Email</p>
               <p className="contact-value">hello@blissfulburn.com</p>
             </div>
             <div className="contact-card">
-              <p className="contact-label">INSTAGRAM</p>
+              <p className="contact-label">Instagram</p>
               <p className="contact-value">@blissfulburncandles</p>
             </div>
             <div className="contact-card">
-              <p className="contact-label">WHOLESALE</p>
+              <p className="contact-label">Wholesale</p>
               <p className="contact-value">wholesale@blissfulburn.com</p>
             </div>
           </div>
