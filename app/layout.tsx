@@ -1,26 +1,11 @@
 import type { Metadata } from "next";
-import { Great_Vibes, Poppins } from "next/font/google";
 import { CartProvider } from "@/components/cart/CartContext";
 import "./globals.css";
 
-const poppins = Poppins({
-  variable: "--font-poppins",
-  weight: ["300", "400", "500", "600"],
-  subsets: ["latin"],
-  display: "swap",
-});
-
-const greatVibes = Great_Vibes({
-  variable: "--font-great-vibes",
-  weight: "400",
-  subsets: ["latin"],
-  display: "swap",
-});
-
 export const metadata: Metadata = {
-  title: "BlissfulBurn Candles",
+  title: "Blissful Burn Candles",
   description:
-    "Modern, clean, soft-luxury candle storefront for Blissful Burn.",
+    "Soft-luxury candles, wax melts, home fragrance, and relax wear from Blissful Burn.",
 };
 
 export default function RootLayout({
@@ -31,7 +16,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${poppins.variable} ${greatVibes.variable} h-full antialiased`}
+      className="h-full antialiased"
     >
       <body
         className="min-h-full flex flex-col"

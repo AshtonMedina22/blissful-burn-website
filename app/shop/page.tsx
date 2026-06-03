@@ -3,31 +3,56 @@ import { SiteFooter, SiteHeader } from "@/components";
 import { PRODUCTS, formatPrice } from "@/lib/products";
 import Link from "next/link";
 
+const collectionFilters = ["Candles", "Wax melts coming soon", "Room fragrance", "Relax wear"];
+
 export default function ShopPage() {
   return (
     <main className="page-container">
       <div className="page-wrapper">
         <SiteHeader />
-        <section className="products-section">
-          <div className="section-header">
-            <h1 className="section-title">SHOP ALL CANDLES</h1>
+        <section className="inner-hero shop-hero">
+          <p className="eyebrow">Shop Blissful Burn</p>
+          <h1 className="hero-headline">Candles made for a softer kind of luxury.</h1>
+          <p className="hero-description">
+            Browse the current signature candle edit, then watch this space for wax
+            melts, fragrance essentials, and cozy relax wear.
+          </p>
+          <div className="filter-pill-row" aria-label="Planned product categories">
+            {collectionFilters.map((filter) => (
+              <span key={filter}>{filter}</span>
+            ))}
+          </div>
+        </section>
+
+        <section className="products-section products-section-luxe">
+          <div className="section-header section-header-split">
+            <div>
+              <p className="eyebrow">Current collection</p>
+              <h2 className="section-display-title">Signature candles</h2>
+            </div>
             <p className="section-subtitle">
-              Curated candle scents for cozy evenings, slow mornings, and
-              thoughtful gifting.
+              Polished, giftable fragrance profiles designed for calm rooms and
+              beautiful everyday rituals.
             </p>
           </div>
           <div className="products-grid">
             {PRODUCTS.map((product) => (
               <article key={product.id} className="product-card">
                 <Link href={`/shop/${product.id}`} className="product-image-link">
-                  <div
-                    className="product-image"
-                    style={{ background: product.gradient }}
-                  />
+                  <div className="product-image-shell">
+                    <div
+                      className="product-image"
+                      style={{ background: product.gradient }}
+                    >
+                      <span className="product-vessel-mark">B</span>
+                    </div>
+                  </div>
                 </Link>
+                <p className="product-category">{product.category}</p>
                 <Link href={`/shop/${product.id}`} className="product-name-link">
                   <p className="product-name">{product.name}</p>
                 </Link>
+                <p className="product-note">{product.note}</p>
                 <p className="product-price">{formatPrice(product.priceCents)}</p>
                 <AddToCartButton product={product} className="product-add-btn" />
               </article>

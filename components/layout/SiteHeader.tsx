@@ -1,12 +1,11 @@
 import Link from "next/link";
 import { CartLink } from "@/components/cart/CartLink";
-import { HomeIcon } from "@/components/icons/Icons";
+import { SearchIcon } from "@/components/icons/Icons";
 
 const NAV_ITEMS = [
-  { href: "/", label: "HOME", iconOnly: true },
-  { href: "/shop", label: "SHOP" },
-  { href: "/about", label: "ABOUT" },
-  { href: "/contact", label: "CONTACT" },
+  { href: "/shop", label: "Shop" },
+  { href: "/about", label: "About" },
+  { href: "/contact", label: "Contact" },
 ];
 
 function BrandMark() {
@@ -22,21 +21,24 @@ function BrandMark() {
 
 export function SiteHeader() {
   return (
-    <header className="site-header">
-      <BrandMark />
-      <nav className="nav-menu">
-        {NAV_ITEMS.map((item) => (
-          <Link
-            key={item.label}
-            href={item.href}
-            className={item.iconOnly ? "nav-item nav-home-icon" : "nav-item"}
-            aria-label={item.iconOnly ? "Home" : undefined}
-          >
-            {item.iconOnly ? <HomeIcon size="sm" /> : item.label}
+    <>
+      <div className="announcement-bar">Free shipping on orders $75+ · New fragrance rituals coming soon</div>
+      <header className="site-header">
+        <BrandMark />
+        <nav className="nav-menu" aria-label="Primary navigation">
+          {NAV_ITEMS.map((item) => (
+            <Link key={item.label} href={item.href} className="nav-item">
+              {item.label}
+            </Link>
+          ))}
+        </nav>
+        <div className="header-actions">
+          <Link href="/shop" className="icon-button" aria-label="Search the shop">
+            <SearchIcon />
           </Link>
-        ))}
-      </nav>
-      <CartLink className="header-cart" />
-    </header>
+          <CartLink className="header-cart" />
+        </div>
+      </header>
+    </>
   );
 }
