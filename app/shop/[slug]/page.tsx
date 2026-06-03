@@ -28,10 +28,13 @@ export default async function ProductDetailPage({ params }: ProductPageProps) {
             <div
               className="product-detail-image"
               style={{ background: product.gradient }}
-            />
+            >
+              <span className="product-vessel-mark product-detail-mark">B</span>
+            </div>
           </div>
 
           <div className="product-detail-content">
+            <p className="eyebrow">{product.category}</p>
             <h1 className="product-detail-title">{product.name}</h1>
             <p className="product-detail-description">{details.shortDescription}</p>
             <p className="product-detail-price">{formatPrice(product.priceCents)}</p>
