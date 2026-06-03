@@ -10,17 +10,23 @@ type CartLinkProps = {
 };
 
 export function CartLink({ className = "", children }: CartLinkProps) {
-  const { itemCount } = useCart();
+  const { itemCount, closeCart } = useCart();
 
   return (
     <Link
       href="/cart"
       className={`icon-button relative ${className}`.trim()}
-      aria-label="Open cart"
+      aria-label="Open full cart page"
+      onClick={closeCart}
     >
-      {children ?? <BagIcon />}
+      {children ?? (
+        <>
+          <BagIcon />
+          <span className="cart-link-label">CART</span>
+        </>
+      )}
       {itemCount > 0 ? (
-        <span className="absolute -right-1 -top-1 rounded-full bg-[var(--primary-pink)] px-1.5 py-0.5 text-[9px] font-medium text-white">
+        <span className="cart-count-badge" aria-label={`${itemCount} items in cart`}>
           {itemCount}
         </span>
       ) : null}

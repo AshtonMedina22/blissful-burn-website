@@ -6,12 +6,50 @@ type CheckoutRequestBody = {
   items: Array<{ productId: string; quantity: number }>;
 };
 
+type CheckoutLineItem = NonNullable<
+  Stripe.Checkout.SessionCreateParams["line_items"]
+>[number];
+type AllowedShippingCountry = NonNullable<
+  NonNullable<
+    Stripe.Checkout.SessionCreateParams["shipping_address_collection"]
+  >["allowed_countries"]
+>[number];
+
+const DEFAULT_ALLOWED_SHIPPING_COUNTRIES = ["US"];
+
 function getStripeClient() {
   const secretKey = process.env.STRIPE_SECRET_KEY;
   if (!secretKey) {
     return null;
   }
+
   return new Stripe(secretKey);
+}
+
+function getSiteUrl() {
+  return (
+    process.env.NEXT_PUBLIC_SITE_URL ??
+    process.env.NEXT_PUBLIC_BASE_URL ??
+    "http://localhost:3000"
+  ).replace(/\/$/, "");
+}
+
+function getAllowedShippingCountries() {
+  const configuredCountries = process.env.STRIPE_SHIPPING_COUNTRIES?.split(",")
+    .map((country) => country.trim().toUpperCase())
+    .filter(Boolean);
+
+  return configuredCountries?.length
+    ? configuredCountries
+    : DEFAULT_ALLOWED_SHIPPING_COUNTRIES;
+}
+
+function shouldAllowPromotionCodes() {
+  return process.env.STRIPE_ALLOW_PROMOTION_CODES !== "false";
+}
+
+function shouldEnableAutomaticTax() {
+  return process.env.STRIPE_ENABLE_AUTOMATIC_TAX === "true";
 }
 
 export async function POST(request: Request) {
@@ -21,7 +59,7 @@ export async function POST(request: Request) {
       return NextResponse.json(
         {
           error:
-            "Stripe is not configured yet. Add STRIPE_SECRET_KEY, NEXT_PUBLIC_SITE_URL, STRIPE_SUCCESS_URL, and STRIPE_CANCEL_URL environment variables.",
+            "Stripe is not configured yet. Add STRIPE_SECRET_KEY and NEXT_PUBLIC_SITE_URL environment variables.",
         },
         { status: 503 },
       );
@@ -31,18 +69,27 @@ export async function POST(request: Request) {
     const requestedItems = Array.isArray(body?.items) ? body.items : [];
 
     if (requestedItems.length === 0) {
-      return NextResponse.json(
-        { error: "Cart is empty." },
-        { status: 400 },
+      return NextResponse.json({ error: "Cart is empty." }, { status: 400 });
+    }
+
+    const itemQuantities = new Map<string, number>();
+    for (const item of requestedItems) {
+      const productId = String(item.productId ?? "").trim();
+      const quantity = Math.min(Math.floor(Number(item.quantity)), 99);
+
+      if (!productId || quantity <= 0) {
+        continue;
+      }
+
+      itemQuantities.set(
+        productId,
+        (itemQuantities.get(productId) ?? 0) + quantity,
       );
     }
 
-    const positiveItems = requestedItems
-      .map((item) => ({
-        productId: item.productId,
-        quantity: Number(item.quantity),
-      }))
-      .filter((item) => item.productId && item.quantity > 0);
+    const positiveItems = Array.from(itemQuantities.entries()).map(
+      ([productId, quantity]) => ({ productId, quantity }),
+    );
 
     if (positiveItems.length === 0) {
       return NextResponse.json(
@@ -51,7 +98,9 @@ export async function POST(request: Request) {
       );
     }
 
-    const products = getProductsByIds(positiveItems.map((item) => item.productId));
+    const products = getProductsByIds(
+      positiveItems.map((item) => item.productId),
+    );
     if (products.length === 0) {
       return NextResponse.json(
         { error: "No matching products were found." },
@@ -60,7 +109,7 @@ export async function POST(request: Request) {
     }
 
     const lineItems = positiveItems
-      .map((item) => {
+      .map((item): CheckoutLineItem | null => {
         const product = products.find((p) => p.id === item.productId);
         if (!product) {
           return null;
@@ -74,13 +123,15 @@ export async function POST(request: Request) {
             product_data: {
               name: product.name,
               description: product.note,
+              metadata: {
+                product_id: product.id,
+                category: product.category,
+              },
             },
           },
-        };
+        } satisfies CheckoutLineItem;
       })
-      .filter((lineItem) => Boolean(lineItem)) as NonNullable<
-      Stripe.Checkout.SessionCreateParams["line_items"]
-    >;
+      .filter((lineItem): lineItem is CheckoutLineItem => Boolean(lineItem));
 
     if (lineItems.length === 0) {
       return NextResponse.json(
@@ -89,28 +140,48 @@ export async function POST(request: Request) {
       );
     }
 
-    const siteUrl =
-      process.env.NEXT_PUBLIC_SITE_URL ??
-      process.env.NEXT_PUBLIC_BASE_URL ??
-      "http://localhost:3000";
+    const siteUrl = getSiteUrl();
     const successUrl =
-      process.env.STRIPE_SUCCESS_URL ?? `${siteUrl}/cart?checkout=success`;
+      process.env.STRIPE_SUCCESS_URL ??
+      `${siteUrl}/cart?checkout=success&session_id={CHECKOUT_SESSION_ID}`;
     const cancelUrl =
       process.env.STRIPE_CANCEL_URL ?? `${siteUrl}/cart?checkout=cancelled`;
+    const cartSummary = positiveItems
+      .map((item) => `${item.productId}:${item.quantity}`)
+      .join(",");
 
     const session = await stripe.checkout.sessions.create({
       mode: "payment",
       line_items: lineItems,
       success_url: successUrl,
       cancel_url: cancelUrl,
+      allow_promotion_codes: shouldAllowPromotionCodes(),
+      automatic_tax: {
+        enabled: shouldEnableAutomaticTax(),
+      },
       billing_address_collection: "auto",
       shipping_address_collection: {
-        allowed_countries: ["US", "CA"],
+        allowed_countries:
+          getAllowedShippingCountries() as AllowedShippingCountry[],
       },
       metadata: {
         source: "blissfulburn-web",
+        cart: cartSummary,
+      },
+      payment_intent_data: {
+        metadata: {
+          source: "blissfulburn-web",
+          cart: cartSummary,
+        },
       },
     });
+
+    if (!session.url) {
+      return NextResponse.json(
+        { error: "Stripe did not return a checkout URL." },
+        { status: 500 },
+      );
+    }
 
     return NextResponse.json({ url: session.url });
   } catch (error) {

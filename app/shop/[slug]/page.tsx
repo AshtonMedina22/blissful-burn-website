@@ -4,6 +4,7 @@ import { AddToCartButton } from "@/components/cart/AddToCartButton";
 import { SiteFooter, SiteHeader } from "@/components";
 import { PRODUCT_DETAILS } from "@/lib/productDetails";
 import { PRODUCTS_BY_ID, formatPrice } from "@/lib/products";
+import { ProductVisual } from "@/components/visuals/BrandVisuals";
 
 type ProductPageProps = {
   params: Promise<{ slug: string }>;
@@ -25,19 +26,26 @@ export default async function ProductDetailPage({ params }: ProductPageProps) {
 
         <section className="product-detail-section">
           <div className="product-detail-visual">
-            <div
-              className="product-detail-image"
-              style={{ background: product.gradient }}
-            />
+            <div className="product-detail-image">
+              <ProductVisual product={product} />
+            </div>
           </div>
 
           <div className="product-detail-content">
+            <p className="eyebrow">{product.category}</p>
             <h1 className="product-detail-title">{product.name}</h1>
-            <p className="product-detail-description">{details.shortDescription}</p>
-            <p className="product-detail-price">{formatPrice(product.priceCents)}</p>
+            <p className="product-detail-description">
+              {details.shortDescription}
+            </p>
+            <p className="product-detail-price">
+              {formatPrice(product.priceCents)}
+            </p>
 
             <div className="product-detail-actions">
-              <AddToCartButton product={product} className="product-detail-add-btn" />
+              <AddToCartButton
+                product={product}
+                className="product-detail-add-btn"
+              />
             </div>
 
             <div className="product-detail-block">
