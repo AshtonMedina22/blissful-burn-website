@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="300 40 540 580" role="img" aria-labelledby="title">
+  <title id="title">Blissful Burn B logo mark in black</title>
+  <g fill="none" stroke="#050505" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M330 318C316 188 418 70 548 64C672 58 785 148 816 270C831 329 822 394 789 448C739 530 641 582 540 574C414 564 323 449 330 318Z" stroke-width="4.5"/>
+    <path d="M816 270C825 322 820 360 810 390" stroke-width="4.5" opacity=".9"/>
+    <path d="M482 300C505 252 625 185 704 195C759 202 757 252 732 292C705 335 640 378 561 415C664 388 743 410 746 482C750 566 606 606 503 590C431 579 440 516 497 475C548 438 648 408 776 402" stroke-width="14"/>
+    <path d="M555 240L493 520" stroke-width="14"/>
+  </g>
+</svg>

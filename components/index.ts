@@ -12,6 +12,7 @@ export { Button } from './buttons/Button';
 export { CartProvider, useCart } from './cart/CartContext';
 export { AddToCartButton } from './cart/AddToCartButton';
 export { CartLink } from './cart/CartLink';
+export { CartDrawer } from './cart/CartDrawer';
 
 // Layout
 export { SiteHeader } from './layout/SiteHeader';

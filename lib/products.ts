@@ -4,6 +4,7 @@ export type Product = {
   priceCents: number;
   note: string;
   gradient: string;
+  category: string;
 };
 
 export const PRODUCTS: Product[] = [
@@ -11,29 +12,33 @@ export const PRODUCTS: Product[] = [
     id: "lavender-fields",
     name: "Lavender Fields",
     priceCents: 2200,
-    gradient: "linear-gradient(160deg,#FAF6F0,#EBC2C7)",
+    gradient: "radial-gradient(circle at 50% 22%,#fff 0 13%,#f9dfe5 14% 31%,#ebc2c7 32% 58%,#faf6f0 59% 100%)",
     note: "Soft floral calm",
+    category: "Soy Blend Candle",
   },
   {
     id: "japanese-cherry-blossom",
     name: "Japanese Cherry Blossom",
     priceCents: 2200,
-    gradient: "linear-gradient(160deg,#FFFFFF,#F7A7B8)",
+    gradient: "radial-gradient(circle at 48% 20%,#fff 0 12%,#ffdce6 13% 30%,#f7a7b8 31% 56%,#fff7f9 57% 100%)",
     note: "Velvet petal blend",
+    category: "Soy Blend Candle",
   },
   {
     id: "birthday-cake",
     name: "Birthday Cake",
     priceCents: 2200,
-    gradient: "linear-gradient(160deg,#FAF6F0,#DCC7B4)",
+    gradient: "radial-gradient(circle at 50% 22%,#fff 0 13%,#f5e7dc 14% 31%,#dcc7b4 32% 58%,#faf6f0 59% 100%)",
     note: "Creamy sweet finish",
+    category: "Soy Blend Candle",
   },
   {
     id: "sunburst-melon",
     name: "Sunburst Melon",
     priceCents: 2200,
-    gradient: "linear-gradient(160deg,#FFFFFF,#EBC2C7)",
+    gradient: "radial-gradient(circle at 50% 22%,#fff 0 12%,#f9d7dc 13% 30%,#ebc2c7 31% 56%,#fffaf6 57% 100%)",
     note: "Fresh fruit brightness",
+    category: "Soy Blend Candle",
   },
 ];
 

@@ -18,7 +18,7 @@ export function AddToCartButton({ product, className }: AddToCartButtonProps) {
       className={className}
       onClick={() => addItem(product)}
     >
-      QUICK ADD
+      ADD TO CART
     </Button>
   );
 }
